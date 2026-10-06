@@ -11,9 +11,20 @@ export const HELP_OPTIONS = [
     value: 'motherboard',
     label: 'Something board-level (told it’s dead, or a part swap didn’t fix it)',
   },
+  { value: 'fleet', label: 'Several devices for a business or school' },
+  { value: 'recycle', label: 'Old devices to reuse or recycle' },
   { value: 'other', label: 'Something else' },
   { value: 'unknown', label: 'I’m not sure what category it is' },
 ] as const;
+
+/** Help options that only appear while their division is enabled. */
+export const HELP_OPTION_FEATURES: Partial<
+  Record<HelpValue, 'motherboardRepair' | 'business' | 'recycling'>
+> = {
+  motherboard: 'motherboardRepair',
+  fleet: 'business',
+  recycle: 'recycling',
+};
 
 export type HelpValue = (typeof HELP_OPTIONS)[number]['value'];
 
@@ -30,7 +41,29 @@ const COMMON: SymptomOption[] = [
   { value: 'other', label: 'Something else (describe below)' },
 ];
 
-const BY_CATEGORY: Record<DeviceCategorySlug | 'motherboard', SymptomOption[]> = {
+const FLEET: SymptomOption[] = [
+  { value: 'screens', label: 'Cracked screens' },
+  { value: 'charging', label: 'Charging ports and batteries' },
+  { value: 'keyboards', label: 'Keyboards and hinges' },
+  { value: 'no-power', label: 'Devices that won’t turn on' },
+  { value: 'retire', label: 'Devices to retire or recycle' },
+  { value: 'other', label: 'Something else (describe below)' },
+];
+
+const RECYCLE: SymptomOption[] = [
+  { value: 'working', label: 'Still works, just old' },
+  { value: 'broken', label: 'Broken, not worth repairing to me' },
+  { value: 'data', label: 'Has data on it that must be wiped' },
+  { value: 'batch', label: 'A batch of devices' },
+  { value: 'other', label: 'Something else (describe below)' },
+];
+
+const BY_CATEGORY: Record<
+  DeviceCategorySlug | 'motherboard' | 'fleet' | 'recycle',
+  SymptomOption[]
+> = {
+  fleet: FLEET,
+  recycle: RECYCLE,
   phones: [
     { value: 'screen-cracked', label: 'Cracked or shattered screen' },
     { value: 'screen-black', label: 'Screen black, lines, or no touch' },

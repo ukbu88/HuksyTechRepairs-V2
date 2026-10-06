@@ -28,6 +28,19 @@ export function createMemoryRepository(
       const row = rows.get(id);
       if (row) row.notified = result.ok ? { ok: true } : { ok: false, error: result.error };
     },
+    async findByReferenceAndEmail(reference, email) {
+      const row = [...rows.values()].find(
+        (r) =>
+          r.reference === reference.toUpperCase() && r.email.toLowerCase() === email.toLowerCase(),
+      );
+      if (!row) return null;
+      return {
+        reference: row.reference,
+        status: 'submitted',
+        createdAt: row.createdAt,
+        deviceSummary: [row.brand, row.model].filter(Boolean).join(' ') || row.help,
+      };
+    },
     all: () => [...rows.values()],
   };
 }

@@ -7,7 +7,8 @@ import { createEnquiry } from '@/enquiries/service';
 import { getEnquiryDeps } from '@/enquiries/container';
 import { EnquiryStorageUnavailableError } from '@/enquiries/repository';
 import { enquiryRateLimiter, MIN_SUBMIT_MS } from '@/enquiries/rate-limit';
-import { logisticsOptions, parseState, stepUrl } from '@/enquiries/flow';
+import { INTENT_FEATURE, logisticsOptions, parseState, stepUrl } from '@/enquiries/flow';
+import { HELP_OPTION_FEATURES, type HelpValue } from '@/enquiries/symptoms';
 import { COOKIE_OPTIONS, DRAFT_COOKIE, RESULT_COOKIE, type DraftCookie } from '@/enquiries/cookies';
 import { getFeatures } from '@/features/snapshot';
 import { business } from '@/config/business';
@@ -80,13 +81,19 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
     consent: str(formData, 'consent') === 'yes' ? true : undefined,
   });
 
-  if (!parsed.success || !allowed.includes(parsed.data.logistics)) {
+  const helpGate = parsed.success ? HELP_OPTION_FEATURES[parsed.data.help as HelpValue] : undefined;
+  const intentGate = parsed.success ? INTENT_FEATURE[parsed.data.intent] : undefined;
+  const divisionOff =
+    (helpGate && !features.isEnabled(helpGate)) || (intentGate && !features.isEnabled(intentGate));
+  if (!parsed.success || !allowed.includes(parsed.data.logistics) || divisionOff) {
     const errors: Record<string, string> = {};
     if (!parsed.success) {
       for (const issue of parsed.error.issues) {
         const key = String(issue.path[0] ?? 'form');
         if (!errors[key]) errors[key] = issue.message;
       }
+    } else if (divisionOff) {
+      errors.help = 'That option is not available right now. Choose another.';
     } else {
       errors.logistics = 'Choose one of the logistics options shown.';
     }

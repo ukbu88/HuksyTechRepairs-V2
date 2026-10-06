@@ -9,17 +9,17 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 | 1 | Working rules | DRAFT |
 | 2 | Launch scope and naming overrides | BUILT (M1–M4) |
 | 3 | Business facts register | DRAFT — mostly unknown |
-| 4 | Stack and architecture | DRAFT |
+| 4 | Stack and architecture | BUILT (M1–M6) |
 | 5 | Visual direction — "Bench Pop" | BUILT (M1–M2) |
 | 6 | Image slots (no stock photography) | BUILT (M1, M5 shot list) |
 | 7 | Launch pages | BUILT (M2–M5) |
-| 8 | Later divisions (built, flagged off) | DRAFT |
+| 8 | Later divisions (built, flagged off) | BUILT (M6) |
 | 9 | Milestones and gates | DRAFT |
 | 10 | Definition of done | DRAFT |
 
 ## Build progress
 
-Current stage: M6 — Flagged divisions — IN PROGRESS
+Current stage: M7 — Hardening — IN PROGRESS
 Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 
 | Milestone | Status | Gate result | Notes |
@@ -29,20 +29,17 @@ Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 | M3 Repair | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /repair + six category pages, typed Canon §7.2 content |
 | M4 Enquiry | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /book six steps + /book/done, Neon + Resend adapters, memory store, HUS refs, works without JS |
 | M5 Supporting + discovery | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | contact, draft policies, gated about, sitemap/robots/OG/JSON-LD, analytics contract |
-| M6 Flagged divisions | IN PROGRESS | — | |
-| M7 Hardening | TODO | — | |
+| M6 Flagged divisions | DONE | lint ✓ typecheck ✓ test ✓ build ✓ (launch + full) screenshots ✓ | business ×4, privacy ×3, recycle, knowledge, refurbished + builder, track; zero leakage under repair-core |
+| M7 Hardening | IN PROGRESS | — | |
 
 ### Current milestone checklist
-- [ ] Business: `/business`, `/business/schools`, `/business/it-providers`, `/business/repair-partners` (Canon §12, §20.9; no SLAs/volumes)
-- [ ] Privacy: `/privacy`, `/privacy/grapheneos`, `/privacy/devices` with dated compatibility records (Canon §10; no absolute claims)
-- [ ] Recycling: `/recycle` with the lifecycle hierarchy (Canon §11)
-- [ ] Knowledge: `/knowledge` index + `/knowledge/[slug]` MDX-style typed article template, zero published articles
-- [ ] Refurbished: `/refurbished` + `/refurbished/build` builder shell with live build sheet, inventory schema, dev-only fixtures
-- [ ] Repair tracking: `/track` architecture only (lookup contract; disabled)
-- [ ] Pickup / mail-in: already config-driven in the enquiry flow; verify under `full`
-- [ ] Homepage section renderers for each division (composition already emits them)
-- [ ] Leakage tests: under `repair-core` nothing from these divisions appears in nav, home, footer, sitemap, JSON-LD, enquiry options
-- [ ] Gate: build under `full` for screenshots in `ops/screenshots/M6/`; lint/typecheck/test/build under launch profile; review in `ops/VERIFY.md`
+- [ ] Playwright e2e: route smoke + axe on every launch route; disabled-route 404s; profile leakage (repair-core, motherboard-only); keyboard-only enquiry; no-JS enquiry; 320px reflow; reduced motion; console errors
+- [ ] 200% zoom check on key flows
+- [ ] Perf pass: bundle/JS per route, Lighthouse-style checks on home and /book
+- [ ] Docs: README, docs/FEATURES.md, docs/CONTENT.md, docs/DEPLOY.md, docs/UNRESOLVED_BUSINESS_FACTS.md
+- [ ] vercel.json / env documentation, `npm audit` review
+- [ ] Fresh-subagent adversarial review of screenshots + running site; fix blockers and majors
+- [ ] Final gate: lint/typecheck/test/test:e2e/build; §10 checklist; tracker COMPLETE; push
 
 ### Blocked / deferred
 - Neon adapter untested against a real database — needs `DATABASE_URL` (M4)

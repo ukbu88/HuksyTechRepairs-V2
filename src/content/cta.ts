@@ -4,7 +4,15 @@ import type { FeatureSnapshot } from '@/features/resolve';
  * The CTA library (Canon Appendix A, with the §2.2 naming override). One typed
  * place so copy stays consistent and booking-dependent CTAs vanish together.
  */
-export type EnquiryIntent = 'repair' | 'diagnosis' | 'second-diagnosis' | 'motherboard';
+export type EnquiryIntent =
+  | 'repair'
+  | 'diagnosis'
+  | 'second-diagnosis'
+  | 'motherboard'
+  | 'business'
+  | 'privacy'
+  | 'refurbished'
+  | 'recycle';
 
 export interface Cta {
   label: string;

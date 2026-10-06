@@ -1,7 +1,16 @@
 import { z } from 'zod';
 import { HELP_OPTIONS, PRIOR_REPAIR_OPTIONS } from './symptoms';
 
-export const INTENTS = ['repair', 'diagnosis', 'second-diagnosis', 'motherboard'] as const;
+export const INTENTS = [
+  'repair',
+  'diagnosis',
+  'second-diagnosis',
+  'motherboard',
+  'business',
+  'privacy',
+  'refurbished',
+  'recycle',
+] as const;
 export type Intent = (typeof INTENTS)[number];
 
 export const LOGISTICS_OPTIONS = ['dropoff', 'mailin', 'pickup', 'arrange'] as const;

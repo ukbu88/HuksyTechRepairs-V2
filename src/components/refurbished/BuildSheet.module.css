@@ -1,0 +1,42 @@
+.sheet {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  background: var(--canvas-warm);
+  padding: var(--space-4);
+}
+.title {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 var(--space-3);
+}
+.fixture {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  color: var(--warning);
+  font-weight: 700;
+  margin: 0 0 var(--space-3);
+}
+.dl {
+  margin: 0;
+  display: grid;
+}
+.row {
+  display: grid;
+  gap: 0.15rem;
+  padding: var(--space-2) 0;
+  border-bottom: var(--border-thin);
+}
+.row dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.row dd {
+  margin: 0;
+  font-size: 1rem;
+}

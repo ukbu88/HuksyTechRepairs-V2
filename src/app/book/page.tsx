@@ -20,6 +20,7 @@ import {
 } from '@/enquiries/flow';
 import {
   HELP_OPTIONS,
+  HELP_OPTION_FEATURES,
   PRIOR_REPAIR_OPTIONS,
   symptomsFor,
   type HelpValue,
@@ -90,9 +91,10 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
         >
           <HiddenState entries={[...carry(state, step), ['step', next!], ['submitted', step]]} />
           <Fieldset legend="What needs help" error={errors.help}>
-            {HELP_OPTIONS.filter(
-              (o) => o.value !== 'motherboard' || features.isEnabled('motherboardRepair'),
-            ).map((o) => (
+            {HELP_OPTIONS.filter((o) => {
+              const gate = HELP_OPTION_FEATURES[o.value];
+              return !gate || features.isEnabled(gate);
+            }).map((o) => (
               <Choice
                 key={o.value}
                 type="radio"

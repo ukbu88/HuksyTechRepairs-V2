@@ -1,4 +1,5 @@
 import type { FeatureSnapshot } from '@/features/resolve';
+import type { FeatureKey } from '@/features/registry';
 import type { Business } from '@/config/business.schema';
 import {
   DeviceStepSchema,
@@ -53,6 +54,8 @@ export function parseState(params: SearchParams): RawState {
   let help = one(params.help);
   if (!help && device) help = device;
   if (!help && intent === 'motherboard') help = 'motherboard';
+  if (!help && intent === 'business') help = 'fleet';
+  if (!help && intent === 'recycle') help = 'recycle';
   return {
     intent,
     help,
@@ -227,4 +230,16 @@ export const INTENT_INTRO: Record<Intent, string> = {
   diagnosis: 'Start a diagnosis',
   'second-diagnosis': 'Get a second diagnosis',
   motherboard: 'Send it for motherboard repair',
+  business: 'Business enquiry',
+  privacy: 'Private phone enquiry',
+  refurbished: 'Refurbished device enquiry',
+  recycle: 'Recycle a device',
+};
+
+/** Intents that only exist while their division is enabled; otherwise they fall back to 'repair'. */
+export const INTENT_FEATURE: Partial<Record<Intent, FeatureKey>> = {
+  business: 'business',
+  privacy: 'privacy',
+  refurbished: 'refurbished',
+  recycle: 'recycling',
 };

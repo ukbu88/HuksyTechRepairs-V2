@@ -1,5 +1,5 @@
 import { neon } from '@neondatabase/serverless';
-import type { EnquiryRepository } from '../repository';
+import { CASE_STATUSES, type CaseStatus, type EnquiryRepository } from '../repository';
 import type { EnquiryInput, StoredEnquiry } from '../schema';
 import { ReferenceSchema } from '../schema';
 
@@ -53,7 +53,36 @@ export function createNeonRepository(sql: SqlClient): EnquiryRepository {
         console.error('[enquiries] could not record notification result', { id, error });
       }
     },
+    async findByReferenceAndEmail(reference, email) {
+      const rows = (await sql`
+        SELECT reference, status, created_at, brand, model, device_category
+        FROM enquiries
+        WHERE reference = ${reference.toUpperCase()} AND lower(contact_email) = ${email.toLowerCase()}
+        LIMIT 1
+      `) as unknown as {
+        reference: string;
+        status: string;
+        created_at: string | Date;
+        brand: string | null;
+        model: string | null;
+        device_category: string;
+      }[];
+      const row = rows[0];
+      if (!row) return null;
+      return {
+        reference: row.reference,
+        status: toStatus(row.status),
+        createdAt: new Date(row.created_at),
+        deviceSummary: [row.brand, row.model].filter(Boolean).join(' ') || row.device_category,
+      };
+    },
   };
+}
+
+function toStatus(value: unknown): CaseStatus {
+  return (CASE_STATUSES as readonly string[]).includes(String(value))
+    ? (value as CaseStatus)
+    : 'submitted';
 }
 
 export function createNeonRepositoryFromUrl(databaseUrl: string): EnquiryRepository {

@@ -1,0 +1,20 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--space-3) var(--space-2);
+  border-bottom: var(--border-thin);
+  vertical-align: top;
+}
+.table thead th {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-bottom: var(--border);
+}

@@ -91,3 +91,20 @@ Screenshots: `ops/screenshots/M5/`.
 - `docs/SHOT_LIST.md` regenerated on build (20 slots).
 
 Open: none. Production origin still localhost in this environment (expected; strict preflight will refuse to ship it).
+
+## M6 — Flagged divisions
+
+Built under `HUSKY_LAUNCH_PROFILE=full` for screenshots: `ops/screenshots/M6-full/` (home, business, schools, privacy, grapheneos, devices, recycle, knowledge, refurbished, build, track; plus dev-mode captures of the builder with fixtures and the article template).
+
+- Full homepage: the launch composition plus five division sections in one consistent shape (problem → belief → proof → action, mono proof labels, ink button). Nav: Repair · Motherboard repairs · Business · Privacy · Refurbished · Knowledge + Start a repair. Footer gains Track a repair and Recycling. It reads as one site, not five brochures.
+- Business: four pages. Zero SLAs, response times, loan devices or capacity promises (unit-tested against those words). Trade model text follows `business.tradeEscalationModel` and says "decided per partner" while undecided.
+- Privacy: three pages. No anonymity or "untraceable" claims; the opposite is stated. Compatible devices are dated records; the list is empty and the page says so rather than guessing. Hardware modifications are explicitly "not currently offered" until confirmed.
+- Recycling: hierarchy ladder (reuse first, recycle last) with the first two rungs in orange; no environmental outcome claims.
+- Knowledge: index says "Nothing published yet" in production. The template fixture renders only in development (`draft: true` → 404 in the production build, verified), and carries a visible "Development fixture" line.
+- Refurbished: storefront and builder read from one inventory function. Production returns no stock (verified: "No devices are available to build from yet"); development fixtures carry no price and a "not real stock" label. Builder options are limited to what the chosen unit supports; the build sheet updates live and renders server-side without JS.
+- Track: lookup needs reference + email; returns the Canon §14.2 status with its meaning. Storage-unavailable state is honest.
+- Enquiry under `full`: logistics offers mail-in, pickup and arrange; "Several devices for a business or school" and "Old devices to reuse or recycle" appear as help options; the action rejects those values when the division is off.
+- Leakage under `repair-core` (rebuilt, served, probed): every division route 404s, including the dev fixture article; no `href` to any division on home, repair, category, motherboard, contact or book; `/book` offers no fleet/recycle option; sitemap has 11 entries, none from a division.
+- Fixed during the gate: none in product code. A dev-only capture issue (Next dev blocks client chunks for non-`localhost` origins) was a test-harness detail.
+
+Open: Vercel/Neon credentials still absent; division copy awaits Prince's facts before any division is switched on.

@@ -13,6 +13,8 @@ import { ProcessSteps } from '@/components/marketing/ProcessSteps';
 import { FinalCta } from '@/components/marketing/FinalCta';
 import { FaultList } from '@/components/motherboard/FaultList';
 import { Section } from '@/components/primitives/Section';
+import { DivisionSection } from '@/components/marketing/DivisionSection';
+import { bookHref } from '@/content/cta';
 import { REPAIR_PROCESS, MOTHERBOARD_PROCESS } from '@/content/process';
 
 export const metadata: Metadata = {
@@ -125,13 +127,94 @@ function renderSection(section: HomeSection, index: number, f: Features) {
           mascot="neutral"
         />
       );
-    // Flagged-off divisions: renderers arrive with M6. Until then they cannot appear
-    // under the launch profile, and composeHome never emits them when the flag is off.
-    case 'business':
     case 'refurbished':
+      return (
+        <DivisionSection
+          key={key}
+          id="home-refurbished"
+          eyebrow="Refurbished"
+          title="Know exactly what you’re buying."
+          paragraphs={[
+            'Two refurbished phones with the same name can contain very different screens, batteries and histories.',
+            'You should know what you are paying for, part by part.',
+            'Every device we sell carries a build sheet: display, battery, housing, board, inspection date.',
+          ]}
+          labels={['Display provenance', 'Battery health', 'Inspection date']}
+          cta={
+            f.isEnabled('refurbBuilder')
+              ? { label: 'Build a device', href: '/refurbished/build' }
+              : { label: 'See refurbished devices', href: '/refurbished' }
+          }
+        />
+      );
     case 'privacy':
+      return (
+        <DivisionSection
+          key={key}
+          id="home-privacy"
+          eyebrow="Privacy"
+          title="Privacy you can understand."
+          tone="warm"
+          paragraphs={[
+            'Most privacy advice is either fear or jargon.',
+            'A private phone is a set of choices you should understand, with trade-offs you accept on purpose.',
+            'We install GrapheneOS on supported phones, explain what changes, and say plainly what you give up.',
+          ]}
+          labels={['Supported devices, dated', 'Trade-offs stated', 'No absolute claims']}
+          cta={{ label: 'Configure a private phone', href: '/privacy' }}
+        />
+      );
+    case 'business':
+      return (
+        <DivisionSection
+          key={key}
+          id="home-business"
+          eyebrow="Business, schools, IT providers"
+          title="Broken devices shouldn’t become IT projects."
+          paragraphs={[
+            'When a device fails, someone spends a morning finding a shop and a week chasing it.',
+            'Repair should be a ticket, not a project.',
+            'One account, batch intake, a case per device, board-level escalation, and a report you can file.',
+          ]}
+          labels={['Batch intake', 'Case per device', 'Reports']}
+          cta={{ label: 'Talk to Husky for Business', href: '/business' }}
+        />
+      );
     case 'recycling':
+      return (
+        <DivisionSection
+          key={key}
+          id="home-recycling"
+          eyebrow="Recycling"
+          title="The most sustainable device is often the one that already exists."
+          tone="warm"
+          paragraphs={[
+            'Recycling is usually sold as the green option. It is the last option.',
+            'Before a device becomes material, it should be reused, repaired, refurbished or harvested for parts.',
+            'That is the order we work in, and we show it.',
+          ]}
+          labels={['Reuse', 'Repair', 'Refurbish', 'Harvest', 'Recycle']}
+          cta={{
+            label: 'Recycle a device',
+            href: f.isEnabled('booking') ? bookHref('recycle') : '/recycle',
+          }}
+          secondary={{ label: 'How the hierarchy works', href: '/recycle' }}
+        />
+      );
     case 'knowledge':
-      return null;
+      return (
+        <DivisionSection
+          key={key}
+          id="home-knowledge"
+          eyebrow="Knowledge"
+          title="Written from the bench."
+          paragraphs={[
+            'Most repair articles are written to rank, not to help.',
+            'A good article comes from a real case and says what could not be proven.',
+            'The Repair Library publishes fewer, dated, specific pieces as real repairs teach something.',
+          ]}
+          cta={{ label: 'Read the Repair Library', href: '/knowledge' }}
+        />
+      );
   }
 }

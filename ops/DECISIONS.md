@@ -35,3 +35,8 @@ One line per decision: date — decision — reason.
 - 2026-10-06 — Organization JSON-LD is emitted site-wide from confirmed facts only; it becomes LocalBusiness only when `addressPolicy: 'public'` and an address exist. Service JSON-LD only for enabled divisions.
 - 2026-10-06 — OG image is generated with next/og from a static Bricolage 800 WOFF (satori cannot read WOFF2); no photography.
 - 2026-10-06 — Analytics: typed event contract with a no-op sink; the enquiry action emits submitted/failed events. No provider until Husky picks a consent-aware one.
+- 2026-10-06 — Division homepage sections share one `DivisionSection` shape (problem → belief → proof → action) so the full homepage stays one system; each division's own page carries the depth.
+- 2026-10-06 — Knowledge is typed local content (structured blocks validated by Zod), not MDX: no markdown pipeline needed for zero articles, and the template decides presentation. A draft fixture exists for development only.
+- 2026-10-06 — Refurbished inventory is a single access function; production returns real records only (none yet), development returns labelled fixtures with no price. The builder is a client component with a server-rendered build sheet fallback.
+- 2026-10-06 — Repair tracking is implemented as a read-only lookup (reference + email, both required) rather than architecture only; status is always "submitted" until operations update rows.
+- 2026-10-06 — Enquiry intents and help options for divisions are gated by the same feature snapshot on render and on submit, so a forged value for an off division is rejected server-side.

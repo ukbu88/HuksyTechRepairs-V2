@@ -1,0 +1,30 @@
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 28rem) 1fr;
+    gap: var(--space-8);
+  }
+}
+.status {
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  background: var(--canvas-warm);
+}
+.status dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.status dd {
+  margin: 0.1rem 0 0;
+}

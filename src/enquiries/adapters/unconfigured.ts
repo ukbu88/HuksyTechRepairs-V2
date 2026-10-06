@@ -13,5 +13,8 @@ export function createUnconfiguredRepository(): EnquiryRepository {
     async markNotified() {
       /* nothing was stored */
     },
+    async findByReferenceAndEmail() {
+      throw new EnquiryStorageUnavailableError();
+    },
   };
 }

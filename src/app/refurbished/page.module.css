@@ -1,0 +1,33 @@
+.stock {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  border-top: var(--border);
+}
+.unit {
+  display: grid;
+  gap: 0.25rem;
+  padding: var(--space-4) 0;
+  border-bottom: var(--border-thin);
+}
+.unitName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+.unitMeta {
+  color: var(--ink-muted);
+}
+.unitPrice {
+  font-weight: 700;
+}
+.fixture {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  color: var(--warning);
+  font-weight: 700;
+}
+.sub {
+  margin-top: var(--space-6);
+}
