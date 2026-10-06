@@ -44,8 +44,11 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.ts",
-    "scripts/**/*.ts", "scripts/**/*.mts",
-    ".next/dev/types/**/*.ts"
+    "scripts/**/*.ts",
+    "scripts/**/*.mts",
+    ".next/dev/types/**/*.ts",
+    ".next-motherboard-only/types/**/*.ts",
+    ".next-motherboard-only/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

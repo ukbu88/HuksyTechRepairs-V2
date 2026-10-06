@@ -7,6 +7,8 @@ import { runPreflight } from './src/config/preflight.ts';
 runPreflight(process.env);
 
 const nextConfig: NextConfig = {
+  // Lets the profile e2e script build a second profile beside the main build.
+  distDir: process.env.HUSKY_DIST_DIR ?? '.next',
   reactStrictMode: true,
   poweredByHeader: false,
   images: { formats: ['image/avif', 'image/webp'] },

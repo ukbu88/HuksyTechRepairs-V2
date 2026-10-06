@@ -18,6 +18,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:profiles": "bash scripts/e2e-profiles.sh",
     "shot-list": "node scripts/generate-shot-list.mts"
   },
   "dependencies": {
@@ -40,6 +41,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
     "eslint-config-prettier": "^10",
+    "playwright-core": "^1.56.1",
     "prettier": "^3.9.9",
     "typescript": "^5.9.3",
     "vitest": "^5.0.3"
