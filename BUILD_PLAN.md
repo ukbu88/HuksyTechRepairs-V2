@@ -42,6 +42,7 @@ Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 - [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M2/`, iterate until it looks like Bench Pop, review in `ops/VERIFY.md`
 
 ### Blocked / deferred
+- `git push origin main` refused with 403 (Claude GitHub App not installed on ukbu88/HuksyTechRepairs-V2; API connector is read-only) — all work is committed locally and the push is retried at every gate — unblocked by installing the app at https://github.com/apps/claude/installations/select_target or reconnecting GitHub at https://claude.ai/connect-github
 - Neon adapter untested against a real database — needs `DATABASE_URL` (M4)
 - Resend notifier untested against the real API — needs `RESEND_API_KEY` + recipient (M4)
 - About page content — needs Prince's real story (M5)
