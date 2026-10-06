@@ -1,0 +1,103 @@
+/* Husky design tokens — "Bench Pop". Purpose-named; see ops/DECISIONS.md for the palette proof. */
+:root {
+  /* Colour: canvas + ink + one signal colour. */
+  --canvas: #ffffff;
+  --canvas-warm: #faf8f4;
+  --surface: #f3f0ea;
+  --surface-2: #e9e5dd;
+  --rule: #d9d5ce;
+  --rule-strong: #121212;
+
+  --ink: #121212;
+  --ink-muted: #5c5955; /* 6.96:1 on canvas */
+
+  --signal: #f25c05; /* ink text on it: 5.63:1 */
+  --signal-deep: #c24a00; /* as text on canvas: 4.91:1 */
+  --signal-tint: #ffe4d3; /* ink on it: 15.4:1 */
+
+  --dark-bg: #141414;
+  --dark-text: #f5f2ec;
+  --dark-muted: #b8b3aa; /* 8.8:1 on dark-bg */
+  --dark-rule: #3a3835;
+
+  --error: #b42318;
+  --error-tint: #fdeceb;
+  --success: #1b6b3a;
+  --success-tint: #e7f4ec;
+  --warning: #8a5300;
+  --warning-tint: #fff3dd;
+
+  --focus: #121212;
+  --focus-halo: #f25c05;
+
+  /* Type. */
+  --font-display: var(--font-bricolage), 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --font-body: var(--font-inter), Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --text-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem); /* 16–17px */
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem); /* 17–19px */
+  --text-small: 0.9375rem; /* 15px, only for metadata, never for essential copy */
+  --text-label: 0.8125rem; /* mono labels, uppercase */
+  --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.75rem);
+  --text-h1: clamp(2.25rem, 1.6rem + 3.2vw, 4.5rem);
+  --text-hero: clamp(2.75rem, 1.5rem + 5.5vw, 6.5rem);
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.15;
+  --leading-body: 1.55;
+  --tracking-display: -0.025em;
+  --tracking-label: 0.08em;
+
+  /* Space (4px base). */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --section-y: clamp(3rem, 2rem + 4vw, 6rem);
+  --gutter: clamp(1rem, 0.5rem + 2vw, 2rem);
+  --w-content: 76rem; /* 1216px */
+  --w-prose: 42rem;
+
+  /* Shape. */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --border: 2px solid var(--ink);
+  --border-thin: 1px solid var(--rule);
+
+  --shadow-slot: 0 1px 2px rgba(18, 18, 18, 0.06), 0 12px 32px -12px rgba(18, 18, 18, 0.25);
+  --shadow-pop: 4px 4px 0 var(--ink);
+
+  /* Motion. */
+  --ease-pop: cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 360ms;
+
+  /* Layers. */
+  --z-header: 50;
+  --z-menu: 60;
+  --z-skip: 100;
+
+  /* Touch targets. */
+  --tap: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

@@ -1,0 +1,109 @@
+.details {
+  position: relative;
+}
+.summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0 var(--space-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  background: var(--canvas);
+}
+.summary::-webkit-details-marker {
+  display: none;
+}
+.bars {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 18px;
+}
+.bars span {
+  display: block;
+  height: 3px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition:
+    transform var(--dur-base) var(--ease-pop),
+    opacity var(--dur-base);
+}
+.details[open] .bars span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.details[open] .bars span:nth-child(2) {
+  opacity: 0;
+}
+.details[open] .bars span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.summaryLabel {
+  font-size: 1rem;
+}
+.panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.75rem);
+  width: min(22rem, calc(100vw - 2 * var(--gutter)));
+  background: var(--canvas);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+  padding: var(--space-3);
+  z-index: var(--z-menu);
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.link {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 var(--space-3);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+.link:hover {
+  background: var(--surface);
+}
+.secondary {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  min-height: var(--tap);
+  color: var(--ink-muted);
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-3);
+  min-height: 52px;
+  background: var(--signal);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+@media (min-width: 900px) {
+  .details {
+    display: none;
+  }
+}

@@ -1,0 +1,28 @@
+.wrap {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--section-y);
+  align-items: center;
+}
+@media (min-width: 720px) {
+  .wrap {
+    grid-template-columns: 260px 1fr;
+  }
+}
+.mascot img {
+  width: 220px;
+  height: 220px;
+}
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+.links a {
+  display: inline-block;
+  padding-block: 0.4rem;
+  font-weight: 600;
+}

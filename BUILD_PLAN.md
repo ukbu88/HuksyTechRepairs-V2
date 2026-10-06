@@ -17,6 +17,35 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 | 9 | Milestones and gates | DRAFT |
 | 10 | Definition of done | DRAFT |
 
+## Build progress
+
+Current stage: M2 — Brand slice — IN PROGRESS
+Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
+
+| Milestone | Status | Gate result | Notes |
+|---|---|---|---|
+| M1 Foundation | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | shell, flags, config, routes, slots, mascot |
+| M2 Brand slice | IN PROGRESS | — | |
+| M3 Repair | TODO | — | |
+| M4 Enquiry | TODO | — | |
+| M5 Supporting + discovery | TODO | — | |
+| M6 Flagged divisions | TODO | — | |
+| M7 Hardening | TODO | — | |
+
+### Current milestone checklist
+- [ ] Home launch composition (`repair-core`): hero with mascot moment, problem-first tiles, motherboard proof section, second-diagnosis orange band, how it works, final CTA
+- [ ] Home `motherboard-only` composition via typed composition rules (no JSX ternary soup)
+- [ ] Homepage composition unit tests across profiles
+- [ ] `/motherboard-repair` per Build Command §15: hero, what board-level means, faults, second-diagnosis path, process, limits, FAQ, CTA
+- [ ] Motherboard explainer: code-drawn board with tap areas (power, charging, display, data), static without JS, reduced-motion safe
+- [ ] Shared page sections: ProblemTiles, SecondDiagnosisBand, ProcessSteps, FAQ (details), FinalCta
+- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M2/`, iterate until it looks like Bench Pop, review in `ops/VERIFY.md`
+
+### Blocked / deferred
+- Neon adapter untested against a real database — needs `DATABASE_URL` (M4)
+- Resend notifier untested against the real API — needs `RESEND_API_KEY` + recipient (M4)
+- About page content — needs Prince's real story (M5)
+
 ---
 
 ## 0. How to use this plan

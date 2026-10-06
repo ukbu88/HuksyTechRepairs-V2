@@ -1,0 +1,32 @@
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
+import prettier from 'eslint-config-prettier';
+
+const config = [
+  {
+    ignores: [
+      '.next/**',
+      'node_modules/**',
+      'playwright-report/**',
+      'test-results/**',
+      'next-env.d.ts',
+    ],
+  },
+  ...nextVitals,
+  ...nextTs,
+  prettier,
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+      'no-console': ['error', { allow: ['warn', 'error'] }],
+      'react/no-unescaped-entities': 'off',
+    },
+  },
+  {
+    files: ['scripts/**', 'tests/**', 'src/config/preflight.ts'],
+    rules: { 'no-console': 'off' },
+  },
+];
+
+export default config;

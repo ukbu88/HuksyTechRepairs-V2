@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280" role="img" aria-label="Husky mascot">
+  <!-- Original v0 Husky mascot, neutral pose. -->
+  <g stroke="#121212" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+      <!-- body -->
+      <path d="M62 180 C40 196 34 236 36 270 L164 270 C166 236 160 196 138 180 C126 190 74 190 62 180 Z" fill="#121212"/>
+      <!-- chest -->
+      <path d="M78 186 C84 198 116 198 122 186 C136 206 134 240 126 270 L74 270 C66 240 64 206 78 186 Z" fill="#FFFFFF" stroke="none"/>
+      <!-- collar -->
+      <path d="M58 182 C70 196 130 196 142 182" fill="none" stroke="#F25C05" stroke-width="11"/>
+      <path d="M58 182 C70 196 130 196 142 182" fill="none" stroke="#121212" stroke-width="4" stroke-dasharray="0 1" />
+      <!-- feet -->
+      <path d="M48 270 C48 258 60 254 70 258 C78 254 90 258 90 270 Z" fill="#FFFFFF"/>
+      <path d="M110 270 C110 258 122 254 130 258 C140 254 152 258 152 270 Z" fill="#FFFFFF"/>
+    </g>
+  <g>
+    <g id="head" stroke="#121212" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M46 72 C38 54 32 36 36 18 C56 24 76 32 90 44 Z" fill="#121212"/>
+      <path d="M154 72 C162 54 168 36 164 18 C144 24 124 32 110 44 Z" fill="#121212"/>
+      <path d="M52 62 C47 50 44 40 46 30 C58 35 68 41 76 48 Z" fill="#F25C05" stroke="none"/>
+      <path d="M148 62 C153 50 156 40 154 30 C142 35 132 41 124 48 Z" fill="#F25C05" stroke="none"/>
+      <path d="M40 112 L24 122 L38 132 L22 144 L40 154 Z" fill="#121212"/>
+      <path d="M160 112 L176 122 L162 132 L178 144 L160 154 Z" fill="#121212"/>
+      <path d="M100 36 C58 36 34 66 34 108 C34 150 62 178 100 178 C138 178 166 150 166 108 C166 66 142 36 100 36 Z" fill="#121212"/>
+      <path d="M42 116 C46 96 58 82 70 74 C82 80 92 88 100 96 C108 88 118 80 130 74 C142 82 154 96 158 116 C162 152 136 172 100 172 C64 172 38 152 42 116 Z" fill="#FFFFFF" stroke="none"/>
+    </g>
+    <path d="M88 134 C88 129 112 129 112 134 C112 142 104 148 100 148 C96 148 88 142 88 134 Z" fill="#121212"/>
+    <ellipse cx="76" cy="112" rx="9" ry="10" fill="#121212"/>
+    <ellipse cx="124" cy="112" rx="9" ry="10" fill="#121212"/>
+    <circle cx="79" cy="108" r="3" fill="#FFFFFF"/>
+    <circle cx="127" cy="108" r="3" fill="#FFFFFF"/>
+    <path d="M100 148 L100 155 M100 155 C93 164 84 162 80 157 M100 155 C107 164 116 162 120 157" fill="none" stroke="#121212" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
