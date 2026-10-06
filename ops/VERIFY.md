@@ -57,3 +57,21 @@ Screenshots: `ops/screenshots/M3/`.
 - Links to `/book?...` still 404 until M4.
 
 Open: none.
+
+## M4 — Enquiry
+
+Routes: `/book` (every step), `/book/done`. Flow exercised end to end on a 390px viewport with JavaScript enabled and with JavaScript disabled, against the in-memory test store. Also the storage-unavailable, validation and tampered-logistics paths.
+Screenshots: `ops/screenshots/M4/` (help, device with errors, symptoms, logistics, contact, done; desktop help and contact).
+
+- One question per screen, mono progress "02 / 06" with an orange track, big tappable choices (56px), "I don't know" paths on every step (category unknown, model unknown, "not sure" prior repair, "arrange it" logistics).
+- GET steps keep every answer in the URL, so Back and the summary's "Change" links never lose progress; contact details are posted and never appear in a URL.
+- Validation: per-step on the server; errors show in a summary (`role="alert"`) and next to the field; only the step just submitted shows errors (a deep link to step 6 with nothing filled shows step 1 quietly).
+- With JS disabled: identical behaviour. The final step posts to the server action; the reference HUS-001002 came back on a plain redirect.
+- Confirmation: real reference from the store (never shown before insert), what happens next without any turnaround promise, what to do now, the magnifier mascot. Direct visit without a result cookie shows an honest "no recent enquiry" state.
+- Fixed: the reference sticker overflowed at 390px; scaled with clamp.
+- Logistics: launch profile offers only "arrange it with me" (no drop-off, mail-in or pickup facts exist). A forged `logistics=pickup` is rejected on both the GET step and the POST.
+- Spam: honeypot, minimum 2.5s on the contact step, 5 submissions / 10 minutes per client address. All server-side.
+- Production safety: no DATABASE_URL → storage throws → the user sees "we couldn't save your enquiry" and nothing claims success; memory store refused in production by the preflight and the container; Resend required in production.
+- Invented-fact check: no response time, fee or drop-off address appears. "We reply by email" is the mechanism the form exists for, not a service-level promise.
+
+Open: Neon and Resend adapters are tested against fakes only (no credentials in the build). Noted in Blocked / deferred.

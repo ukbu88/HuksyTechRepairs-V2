@@ -7,7 +7,7 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 |---|---|---|
 | 0 | How to use this plan | DRAFT |
 | 1 | Working rules | DRAFT |
-| 2 | Launch scope and naming overrides | AGREED (scope) / DRAFT (detail) |
+| 2 | Launch scope and naming overrides | BUILT (M1–M4) |
 | 3 | Business facts register | DRAFT — mostly unknown |
 | 4 | Stack and architecture | DRAFT |
 | 5 | Visual direction — "Bench Pop" | BUILT (M1–M2) |
@@ -19,7 +19,7 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 
 ## Build progress
 
-Current stage: M4 — Enquiry — IN PROGRESS
+Current stage: M5 — Supporting + discovery — IN PROGRESS
 Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 
 | Milestone | Status | Gate result | Notes |
@@ -27,22 +27,21 @@ Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 | M1 Foundation | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | shell, flags, config, routes, slots, mascot |
 | M2 Brand slice | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | home (repair + motherboard compositions), /motherboard-repair + CSS explainer |
 | M3 Repair | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /repair + six category pages, typed Canon §7.2 content |
-| M4 Enquiry | IN PROGRESS | — | |
-| M5 Supporting + discovery | TODO | — | |
+| M4 Enquiry | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /book six steps + /book/done, Neon + Resend adapters, memory store, HUS refs, works without JS |
+| M5 Supporting + discovery | IN PROGRESS | — | |
 | M6 Flagged divisions | TODO | — | |
 | M7 Hardening | TODO | — | |
 
 ### Current milestone checklist
-- [ ] Enquiry domain: Zod schema (steps: what needs help → device → what's happening → prior repair → logistics → contact/consent), intents, device prefill
-- [ ] `EnquiryRepository` interface + Neon adapter (`@neondatabase/serverless`, plain SQL) + migration `db/migrations/0001_enquiries.sql` issuing `HUS-######` on insert
-- [ ] `Notifier` interface + Resend adapter; failed email never loses or duplicates the stored enquiry
-- [ ] In-memory adapter, clearly labelled, refused in production; production refuses to fake success
-- [ ] Server action + no-JS form submission path (multi-step with server-side state in the URL/form, back without losing progress)
-- [ ] Spam protection: honeypot + time-to-submit + in-memory rate limit per IP
-- [ ] Confirmation page with real reference, mascot, "what happens next" without invented promises
-- [ ] Error state that is honest when storage is unavailable
-- [ ] Unit tests: schema, reference format, repository contract (memory + Neon with a mocked client), notifier failure handling, rate limit
-- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M4/`, review in `ops/VERIFY.md`
+- [ ] `/about` gated on `business.about` (404 until content exists), with the real-content template ready
+- [ ] `/contact`: only confirmed facts; otherwise routes to /book
+- [ ] `/policies/privacy` and `/policies/repair-terms`: clearly marked DRAFT, factual about what the site actually does
+- [ ] Metadata: canonicals on every route, OG image (code-drawn, `opengraph-image.tsx`), robots, sitemap filtered by features
+- [ ] JSON-LD: Organization (confirmed facts only; LocalBusiness only with address), Service per enabled division, BreadcrumbList
+- [ ] Typed analytics event contract with a no-op sink
+- [ ] Unit tests: sitemap filtering per profile, JSON-LD never emits disabled services or unconfirmed facts
+- [ ] `docs/SHOT_LIST.md` regenerated (already automatic postbuild)
+- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M5/`, review in `ops/VERIFY.md`
 
 ### Blocked / deferred
 - Neon adapter untested against a real database — needs `DATABASE_URL` (M4)

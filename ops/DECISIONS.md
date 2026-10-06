@@ -27,3 +27,7 @@ One line per decision: date — decision — reason.
 - 2026-10-06 — The trade-escalation audience stays on `/motherboard-repair` as one paragraph and one FAQ (BUILD_PLAN §2.2 keeps it); the Business division and its routes remain flagged off.
 - 2026-10-06 — Board explainer is CSS-only (radio group + `:has()`), no GSAP; it degrades to a labelled static board with four always-visible notes. GSAP was not needed and is not installed.
 - 2026-10-06 — Mascot appears on: logo mark, 404, home final CTA (the one hero moment), enquiry confirmation (M4). Nowhere else.
+- 2026-10-06 — Enquiry steps 1–5 are GET forms (state in the URL, native back, no JS); only the contact step POSTs to a server action. Outcome and failed drafts cross the redirect in short-lived httpOnly cookies scoped to /book, so personal details never enter a URL.
+- 2026-10-06 — Persistence is plain SQL over `@neondatabase/serverless` (no Drizzle): one table, one migration, and the `HUS-######` reference is a column default from a Postgres sequence starting at 1001 — the database issues it, never the app.
+- 2026-10-06 — Notification is Husky-only (ENQUIRY_NOTIFY_TO). A customer acknowledgement email is deliberately not sent until a verified sending domain and reviewed wording exist; the confirmation page is the acknowledgement.
+- 2026-10-06 — Rate limiting is in-memory per instance (5 per 10 minutes per client address) plus a honeypot and a minimum time-on-step. Documented as a soft brake, not a security boundary.

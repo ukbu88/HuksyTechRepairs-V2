@@ -33,6 +33,8 @@ for (const vp of viewports) {
     const slug = route === '/' ? 'home' : route.replace(/^\//, '').replace(/[\/?=&]/g, '_');
     await page.goto(base + route, { waitUntil: 'load' });
     await page.evaluate(() => document.fonts.ready);
+    // Sticky header would repeat mid-capture in full-page shots; pin it for the screenshot only.
+    await page.addStyleTag({ content: 'header{position:static!important}' });
     const file = path.join(dir, `${slug}--${vp.name}.png`);
     await page.screenshot({ path: file, fullPage: true });
     console.log(`[screenshot] ${file}`);
