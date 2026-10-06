@@ -1,0 +1,33 @@
+.band {
+  border-top: var(--border);
+  border-bottom: var(--border);
+}
+.inner {
+  display: grid;
+  gap: var(--space-5);
+  align-items: end;
+}
+@media (min-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-8);
+  }
+}
+.title {
+  font-size: var(--text-hero);
+  max-width: 12ch;
+  margin-bottom: 0.3em;
+}
+.titleCompact {
+  font-size: var(--text-h1);
+  max-width: 14ch;
+  margin-bottom: 0.3em;
+}
+.lead {
+  font-size: var(--text-lead);
+  max-width: 36rem;
+  margin: 0;
+}
+.action {
+  padding-bottom: 0.25rem;
+}

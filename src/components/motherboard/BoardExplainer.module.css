@@ -1,0 +1,227 @@
+.explainer {
+  display: grid;
+  gap: var(--space-5);
+}
+@media (min-width: 960px) {
+  .explainer {
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-areas:
+      'controls controls'
+      'stage notes';
+    align-items: start;
+  }
+  .controls {
+    grid-area: controls;
+  }
+  .stage {
+    grid-area: stage;
+    position: sticky;
+    top: 88px;
+  }
+  .notes {
+    grid-area: notes;
+  }
+}
+.controls {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.legend {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--dark-muted);
+  margin-bottom: var(--space-3);
+}
+.radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.radioWrap {
+  display: contents;
+}
+.radio {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 2px solid var(--dark-text);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--dark-text);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast),
+    color var(--dur-fast),
+    transform var(--dur-fast) var(--ease-pop);
+}
+.chip:hover {
+  transform: translateY(-2px);
+}
+.radio:checked + .chip {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--ink);
+}
+.radio:focus-visible + .chip {
+  outline: 3px solid var(--dark-text);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--signal);
+}
+
+.stage {
+  background: #1b1b1b;
+  border: 2px solid var(--dark-rule);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+}
+.svg {
+  width: 100%;
+  height: auto;
+}
+.substrate {
+  fill: #242424;
+  stroke: #3a3835;
+  stroke-width: 2;
+}
+.hole {
+  fill: #141414;
+  stroke: #3a3835;
+  stroke-width: 2;
+}
+.traces path {
+  fill: none;
+  stroke: #4d4a45;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.part,
+.cap {
+  fill: #3a3835;
+}
+.ic {
+  fill: #e9e5dd;
+  stroke: #121212;
+  stroke-width: 2;
+}
+.icDark {
+  fill: #0c0c0c;
+  stroke: #6b6b6b;
+  stroke-width: 2;
+}
+.connector {
+  fill: #b8b3aa;
+  stroke: #121212;
+  stroke-width: 2;
+}
+.chipLabel,
+.chipLabelSmall,
+.tiny,
+.areaLabel {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  fill: #121212;
+}
+.chipLabel {
+  font-size: 15px;
+}
+.chipLabelSmall {
+  font-size: 11px;
+}
+.tiny {
+  font-size: 10px;
+  fill: #b8b3aa;
+}
+.areaLabel {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  fill: #f5f2ec;
+}
+.icDark + .chipLabel {
+  fill: #f5f2ec;
+}
+.callout {
+  fill: rgba(242, 92, 5, 0.06);
+  stroke: #f25c05;
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  opacity: 0.55;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    fill var(--dur-base);
+}
+.region {
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+/* Highlight the chosen area; dim the others. The "whole board" state leaves all at rest. */
+.explainer:has(:global(#area-power):checked) .region:not([data-area='power']),
+.explainer:has(:global(#area-charging):checked) .region:not([data-area='charging']),
+.explainer:has(:global(#area-display):checked) .region:not([data-area='display']),
+.explainer:has(:global(#area-data):checked) .region:not([data-area='data']) {
+  opacity: 0.35;
+}
+.explainer:has(:global(#area-power):checked) .region[data-area='power'] .callout,
+.explainer:has(:global(#area-charging):checked) .region[data-area='charging'] .callout,
+.explainer:has(:global(#area-display):checked) .region[data-area='display'] .callout,
+.explainer:has(:global(#area-data):checked) .region[data-area='data'] .callout {
+  opacity: 1;
+  fill: rgba(242, 92, 5, 0.18);
+  stroke-dasharray: none;
+  stroke-width: 3;
+}
+
+.notes {
+  display: grid;
+  gap: var(--space-3);
+}
+.note {
+  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+  border-left: 4px solid var(--dark-rule);
+  background: #1b1b1b;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  transition:
+    border-color var(--dur-base),
+    background-color var(--dur-base);
+}
+.explainer:has(:global(#area-power):checked) .note[data-area='power'],
+.explainer:has(:global(#area-charging):checked) .note[data-area='charging'],
+.explainer:has(:global(#area-display):checked) .note[data-area='display'],
+.explainer:has(:global(#area-data):checked) .note[data-area='data'] {
+  border-left-color: var(--signal);
+  background: #232323;
+}
+.noteTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.3em;
+  color: var(--dark-text);
+}
+.plain {
+  margin-bottom: 0.6em;
+  color: var(--dark-text);
+}
+.technical {
+  margin: 0;
+  color: var(--dark-muted);
+  font-size: 1rem;
+}
+.techTag {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-right: 0.35em;
+}

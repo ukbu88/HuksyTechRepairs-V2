@@ -1,0 +1,29 @@
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-5) 0 0;
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+.card {
+  border: var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--canvas);
+}
+.dl {
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.dl dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-muted);
+}
+.dl dd {
+  margin: 0;
+}

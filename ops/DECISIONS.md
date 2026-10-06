@@ -22,3 +22,8 @@ One line per decision: date — decision — reason.
 - 2026-10-06 — Playwright pinned to 1.56.1 to match the preinstalled Chromium build in the container; e2e runs against the production server.
 - 2026-10-06 — Mobile menu is a native <details>/<summary>; one tiny client component closes it on navigation. Works with JS off.
 - 2026-10-06 — Mascot v0: flat ink/white husky with orange inner ears and collar, cheek tufts; poses neutral / magnifier / confused. Original drawing, not derived from any existing character.
+- 2026-10-06 — Homepage is a typed composition (`composeHome` → ordered section kinds); page.tsx only maps kinds to renderers. `motherboard-only` leads with the division message and the second-diagnosis band; repair-led mode leads with the master line and problem tiles — Build Command §8.6.
+- 2026-10-06 — Approval before work is rendered as part of the Canon-defined process (§8.2 steps 5–6: explanation → approval → repair). The fee policy and exact quote wording remain business-fact TODOs and only render when configured.
+- 2026-10-06 — The trade-escalation audience stays on `/motherboard-repair` as one paragraph and one FAQ (BUILD_PLAN §2.2 keeps it); the Business division and its routes remain flagged off.
+- 2026-10-06 — Board explainer is CSS-only (radio group + `:has()`), no GSAP; it degrades to a labelled static board with four always-visible notes. GSAP was not needed and is not installed.
+- 2026-10-06 — Mascot appears on: logo mark, 404, home final CTA (the one hero moment), enquiry confirmation (M4). Nowhere else.

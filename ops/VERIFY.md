@@ -20,3 +20,25 @@ Checked against Canon §16–17, §29; Build Command §3; BUILD_PLAN §5.
 - Not yet judged for "Bench Pop" feel: the home is a placeholder; that judgement is M2's gate.
 
 Issues found and fixed: footer promise (above); mobile header lost the persistent action under 560px (now always visible). Open: none.
+
+## M2 — Brand slice
+
+Routes: `/` (repair-core composition), `/motherboard-repair`, explainer with "Data" selected.
+Screenshots: `ops/screenshots/M2/`.
+
+Judged against Canon §16–17, §29; Build Command §3.1; BUILD_PLAN §5. Question asked of every screenshot: Bench Pop or template?
+
+- Home hero: "Keep good technology alive." at hero scale, lead copy from Canon Appendix B, signal primary + outline secondary, bench photo slot with three tilted symptom stickers. Reads as Husky, not a SaaS hero: no gradient, no centred blob, no pill row.
+- Capability rail: one mono strip of three true statements (device types, board-level diagnosis, case reference). Replaced the usual icon-card row. Fixed: text raised to 16px.
+- Problem tiles: symptom sticker leads, device name follows; "Something else" tile in solid orange with "SOMETHING WEIRD?". Six tiles are not identical: stickers, tilts and the orange outlier break the grid.
+- Motherboard proof: dark band carrying the Canon §4.2 pattern (familiar story → why it fails → what we do). Fixed: headline was five lines at h1 scale; reduced to a 3.75rem cap.
+- Second-diagnosis band: full-bleed orange with ink text (5.6:1). One message, one action.
+- Process: four steps with orange mono counters. Fixed: implicit grid rows were stretching, so step titles sat at different heights across columns (`align-content: start`). Fixed: band changed from warm to white so the page is not dark/orange/warm/dark in a row.
+- Final CTA: dark band with the single mascot moment (neutral pose) and two actions.
+- Mobile (390): hero stacks with the headline at 2.75rem, buttons full width, stickers under the photo. Tiles stack one per row with 44px+ targets. Nothing is squashed; nothing scrolls horizontally.
+- `/motherboard-repair`: Build Command §15 structure complete (hero, what board-level means + explainer, faults, second-diagnosis path, five-step process with photo slots, limits, trade note, FAQ, CTA). Case-file slot renders nothing because no cases exist.
+- Explainer: radio chips drive CSS `:has()` highlights on a code-drawn board; all four notes stay visible. Fixed: CSS Modules hashed the `#area-*` ids, so `:has()` never matched (wrapped in `:global()`). Fixed: DISPLAY and CHARGING labels collided with the Data callout. Works with JS disabled (radios + CSS) and reduced motion (durations collapse to 0).
+- Invented facts check: no price, hours, address, turnaround, fee or warranty appears. "Nothing goes ahead until you say so" and "you approve before any repair work starts" follow the Canon's defined process (§8.2 steps 5–6); the exact quote/fee wording stays a config TODO and is only rendered when supplied.
+- Links to `/book` 404 until M4 (expected).
+
+Open: none for this milestone. M2 verdict: looks like Bench Pop. Keep the restraint: no new bands on later pages without a content reason.

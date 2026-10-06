@@ -10,7 +10,7 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 | 2 | Launch scope and naming overrides | AGREED (scope) / DRAFT (detail) |
 | 3 | Business facts register | DRAFT — mostly unknown |
 | 4 | Stack and architecture | DRAFT |
-| 5 | Visual direction — "Bench Pop" | AGREED (direction) / DRAFT (detail) |
+| 5 | Visual direction — "Bench Pop" | BUILT (M1–M2) |
 | 6 | Image slots (no stock photography) | AGREED (approach) / DRAFT (detail) |
 | 7 | Launch pages | AGREED (list) / DRAFT (detail) |
 | 8 | Later divisions (built, flagged off) | DRAFT |
@@ -19,27 +19,27 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 
 ## Build progress
 
-Current stage: M2 — Brand slice — IN PROGRESS
+Current stage: M3 — Repair — IN PROGRESS
 Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 
 | Milestone | Status | Gate result | Notes |
 |---|---|---|---|
 | M1 Foundation | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | shell, flags, config, routes, slots, mascot |
-| M2 Brand slice | IN PROGRESS | — | |
-| M3 Repair | TODO | — | |
+| M2 Brand slice | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | home (repair + motherboard compositions), /motherboard-repair + CSS explainer |
+| M3 Repair | IN PROGRESS | — | |
 | M4 Enquiry | TODO | — | |
 | M5 Supporting + discovery | TODO | — | |
 | M6 Flagged divisions | TODO | — | |
 | M7 Hardening | TODO | — | |
 
 ### Current milestone checklist
-- [ ] Home launch composition (`repair-core`): hero with mascot moment, problem-first tiles, motherboard proof section, second-diagnosis orange band, how it works, final CTA
-- [ ] Home `motherboard-only` composition via typed composition rules (no JSX ternary soup)
-- [ ] Homepage composition unit tests across profiles
-- [ ] `/motherboard-repair` per Build Command §15: hero, what board-level means, faults, second-diagnosis path, process, limits, FAQ, CTA
-- [ ] Motherboard explainer: code-drawn board with tap areas (power, charging, display, data), static without JS, reduced-motion safe
-- [ ] Shared page sections: ProblemTiles, SecondDiagnosisBand, ProcessSteps, FAQ (details), FinalCta
-- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M2/`, iterate until it looks like Bench Pop, review in `ops/VERIFY.md`
+- [ ] Typed repair content: per-category copy (symptoms, causes, how we diagnose, options, data, logistics, FAQ, next action) per Canon §7.2
+- [ ] `/repair` landing: problem tiles, common repair categories, motherboard escalation path, FAQ, start repair
+- [ ] `/repair/[category]` page template with generateStaticParams for the six categories, real 404 otherwise
+- [ ] Brand/model/repair route architecture stubbed in the catalogue (no records yet)
+- [ ] Breadcrumbs component (visible + JSON-LD later in M5)
+- [ ] Unit tests: category content completeness, route params
+- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M3/`, review in `ops/VERIFY.md`
 
 ### Blocked / deferred
 - `git push origin main` refused with 403 (Claude GitHub App not installed on ukbu88/HuksyTechRepairs-V2; API connector is read-only) — all work is committed locally and the push is retried at every gate — unblocked by installing the app at https://github.com/apps/claude/installations/select_target or reconnecting GitHub at https://claude.ai/connect-github

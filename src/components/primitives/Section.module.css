@@ -1,0 +1,9 @@
+.section {
+  padding-block: var(--section-y);
+}
+.tight {
+  padding-block: calc(var(--section-y) * 0.5);
+}
+.section:global(.band--warm) {
+  background: var(--canvas-warm);
+}
