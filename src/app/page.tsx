@@ -64,7 +64,7 @@ function renderSection(section: HomeSection, index: number, f: Features) {
             items={[
               'Phones, tablets, laptops, desktops, consoles',
               'Board-level diagnosis when a part swap doesn’t fix it',
-              'One enquiry, one case reference, plain-English updates',
+              'One enquiry, one case reference, plain-English answers',
             ]}
           />
         </Section>

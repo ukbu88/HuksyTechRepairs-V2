@@ -24,9 +24,18 @@ export function createRateLimiter(limit: number, windowMs: number): RateLimiter 
   };
 }
 
+export const DEFAULT_RATE_LIMIT = 5;
+export const RATE_WINDOW_MS = 10 * 60 * 1000;
+
+/** Submissions per window per address. HUSKY_RATE_LIMIT overrides it (test runs need more). */
+export function configuredRateLimit(env: Record<string, string | undefined> = process.env): number {
+  const n = Number(env.HUSKY_RATE_LIMIT);
+  return Number.isInteger(n) && n > 0 ? n : DEFAULT_RATE_LIMIT;
+}
+
 function limiterSingleton(): RateLimiter {
   const g = globalThis as { __huskyRateLimiter?: RateLimiter };
-  g.__huskyRateLimiter ??= createRateLimiter(5, 10 * 60 * 1000);
+  g.__huskyRateLimiter ??= createRateLimiter(configuredRateLimit(), RATE_WINDOW_MS);
   return g.__huskyRateLimiter;
 }
 

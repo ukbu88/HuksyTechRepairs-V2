@@ -435,6 +435,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
                 type="checkbox"
                 value="yes"
                 required
+                defaultChecked={draft?.consent ?? false}
                 aria-invalid={cErrors.consent ? true : undefined}
               />
               <span>

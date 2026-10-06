@@ -9,6 +9,10 @@ const profile = process.env.HUSKY_LAUNCH_PROFILE ?? 'launch';
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
+  // The enquiry specs drive full-page navigations through a single Node server; keep
+  // contention low so timing never masquerades as a product failure.
+  workers: process.env.CI ? 2 : 3,
+  timeout: 60_000,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'github' : 'list',
@@ -29,6 +33,8 @@ export default defineConfig({
       HUSKY_LAUNCH_PROFILE: profile,
       // The in-memory test adapter: e2e never touches a real database or sends email.
       HUSKY_ENQUIRY_STORE: 'memory',
+      // The suite submits many enquiries from one address; the production limit (5 / 10 min) stays the default.
+      HUSKY_RATE_LIMIT: '1000',
     },
   },
 });

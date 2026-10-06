@@ -23,7 +23,7 @@ export async function createEnquiry(
   meta: Record<string, unknown> = {},
 ): Promise<CreateEnquiryResult> {
   const enquiry = await deps.repository.insert(input, meta);
-  const result = await deps.notifier.notifyNewEnquiry(enquiry);
+  const result = await deps.notifier.notifyNewEnquiry(enquiry, meta);
   if (!result.ok) {
     console.error(`[enquiries] notification failed for ${enquiry.reference}: ${result.error}`);
   }

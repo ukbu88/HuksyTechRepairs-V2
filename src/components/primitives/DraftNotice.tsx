@@ -1,13 +1,13 @@
 import styles from './DraftNotice.module.css';
 
 /** The visible marker on policy pages until Husky has reviewed them. */
-export function DraftNotice({ version }: { version: string }) {
+export function DraftNotice({ version, pending }: { version: string; pending?: string }) {
   return (
     <div className={styles.notice} role="note">
       <span className={styles.tag}>Draft {version}</span>
       <p>
-        This page was drafted from what the website actually does. It has not yet been reviewed by
-        Husky and is not legal advice. It will be updated and this notice removed once reviewed.
+        This page describes what the website does today and is awaiting Husky’s review. It is not
+        legal advice.{pending ? ` ${pending}` : ''}
       </p>
     </div>
   );

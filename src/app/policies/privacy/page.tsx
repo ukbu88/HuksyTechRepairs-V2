@@ -30,7 +30,12 @@ export default function PrivacyPolicyPage() {
       <Section>
         <p className="eyebrow">Policies</p>
         <h1>Privacy policy</h1>
-        {!status.reviewed ? <DraftNotice version={status.version} /> : null}
+        {!status.reviewed ? (
+          <DraftNotice
+            version={status.version}
+            pending="The retention period and a dedicated contact for privacy requests are added once Husky confirms them."
+          />
+        ) : null}
         <div className="prose">
           <p>
             This policy explains what {entity} ("Husky", "we") collects through this website, why,
@@ -90,7 +95,7 @@ export default function PrivacyPolicyPage() {
                 Email <a href={`mailto:${business.publicEmail}`}>{business.publicEmail}</a>.
               </>
             ) : (
-              'A contact address for privacy requests will be published here once confirmed; in the meantime, reply to any email from us about your case.'
+              'Reply to any email from us about your case, or start an enquiry and say it is a privacy request.'
             )}
           </p>
 

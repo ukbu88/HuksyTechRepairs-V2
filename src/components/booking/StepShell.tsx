@@ -49,7 +49,7 @@ export function StepShell({
         <h1 className={styles.question}>{question}</h1>
         {hint ? <p className={`lead ${styles.hint}`}>{hint}</p> : null}
         {errorSummary && errorSummary.length > 0 ? (
-          <div className={styles.errorSummary} role="alert">
+          <div className={styles.errorSummary} role="alert" tabIndex={-1}>
             <p className={styles.errorTitle}>Something needs fixing before we can continue:</p>
             <ul>
               {errorSummary.map((e) => (

@@ -38,6 +38,7 @@ function escapeHtml(s: string): string {
 export function buildNotification(
   e: StoredEnquiry,
   siteUrl: string,
+  meta: Record<string, unknown> = {},
 ): { subject: string; text: string; html: string } {
   const device =
     [e.brand, e.model].filter(Boolean).join(' ') || (e.modelUnknown ? 'Model unknown' : '—');
@@ -58,6 +59,11 @@ export function buildNotification(
     ['Phone', e.phone || '—'],
     ['Submitted', e.createdAt.toISOString()],
   ];
+  if (meta.fastSubmit)
+    fields.push([
+      'Note',
+      `Submitted ${String(meta.elapsedMs ?? '?')} ms after the contact step loaded: possibly automated, worth a second look.`,
+    ]);
   const subject = `New enquiry ${e.reference} · ${label(HELP_OPTIONS, e.help)} · ${e.intent}`;
   const text = [
     `New enquiry ${e.reference}`,
@@ -81,8 +87,8 @@ export function buildNotification(
 export function createResendNotifier(sender: EmailSender, config: ResendConfig): Notifier {
   return {
     name: 'resend',
-    async notifyNewEnquiry(enquiry) {
-      const message = buildNotification(enquiry, config.siteUrl);
+    async notifyNewEnquiry(enquiry, meta) {
+      const message = buildNotification(enquiry, config.siteUrl, meta);
       try {
         const result = await sender.send({ from: config.from, to: config.to, ...message });
         if ('error' in result) return { ok: false, error: result.error };

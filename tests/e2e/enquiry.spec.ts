@@ -110,7 +110,6 @@ test('an enquiry can be completed using only the keyboard and yields a real refe
   await page.keyboard.press('Tab'); // consent
   await page.keyboard.press('Space');
   await expect(page.locator('#consent')).toBeChecked();
-  await page.waitForTimeout(2600); // minimum time-on-step
   await page.getByRole('button', { name: 'Open my case' }).focus();
   await page.keyboard.press('Enter');
   await page.waitForURL(/\/book\/done/);
@@ -124,7 +123,6 @@ test('the enquiry works with JavaScript disabled', async ({ browser }) => {
   await page.fill('#name', 'No Script');
   await page.fill('#email', 'noscript@example.com');
   await page.click('#consent');
-  await page.waitForTimeout(2600);
   await page.getByRole('button', { name: 'Open my case' }).click();
   await page.waitForURL(/\/book\/done/);
   await expect(page.locator('h1')).toContainText(/HUS-\d{6}/);
@@ -155,4 +153,36 @@ test('the honeypot swallows bots without a reference', async ({ page }) => {
 test('/book/done without a result is honest', async ({ page }) => {
   await page.goto('/book/done');
   await expect(page.locator('h1')).toContainText('No recent enquiry');
+});
+
+test('a valid enquiry submitted immediately (autofill speed) is stored, not dropped', async ({
+  page,
+}) => {
+  await fillStepsToContact(page);
+  await page.fill('#name', 'Fast Autofill');
+  await page.fill('#email', 'fast@example.com');
+  await page.click('#consent');
+  await page.getByRole('button', { name: 'Open my case' }).click();
+  await page.waitForURL(/\/book\/done/);
+  await expect(page.locator('h1')).toContainText(/HUS-\d{6}/);
+});
+
+test('consent and contact details survive a validation error', async ({ page }) => {
+  await fillStepsToContact(page);
+  await page.fill('#name', 'Only Name');
+  await page.click('#consent');
+  await page.getByRole('button', { name: 'Open my case' }).click();
+  await page.waitForURL(/error=1/);
+  await expect(page.locator('#name')).toHaveValue('Only Name');
+  await expect(page.locator('#consent')).toBeChecked();
+  await expect(page.getByRole('alert').first()).toContainText(/email/i);
+});
+
+test('mobile menu closes on Escape', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.click('header summary');
+  await expect(page.locator('#mobile-menu')).toHaveAttribute('open', '');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#mobile-menu')).not.toHaveAttribute('open', '');
 });

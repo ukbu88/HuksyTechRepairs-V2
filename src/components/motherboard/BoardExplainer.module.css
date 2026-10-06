@@ -135,17 +135,17 @@
   fill: #121212;
 }
 .chipLabel {
-  font-size: 15px;
+  font-size: 16px;
 }
 .chipLabelSmall {
-  font-size: 11px;
+  font-size: 13px;
 }
 .tiny {
   font-size: 10px;
   fill: #b8b3aa;
 }
 .areaLabel {
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.08em;
   fill: #f5f2ec;
 }

@@ -5,22 +5,22 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 
 | § | Section | Status |
 |---|---|---|
-| 0 | How to use this plan | DRAFT |
-| 1 | Working rules | DRAFT |
+| 0 | How to use this plan | USED |
+| 1 | Working rules | FOLLOWED |
 | 2 | Launch scope and naming overrides | BUILT (M1–M4) |
-| 3 | Business facts register | DRAFT — mostly unknown |
+| 3 | Business facts register | BUILT (config + preflight); facts still TODO — see docs/UNRESOLVED_BUSINESS_FACTS.md |
 | 4 | Stack and architecture | BUILT (M1–M6) |
 | 5 | Visual direction — "Bench Pop" | BUILT (M1–M2) |
 | 6 | Image slots (no stock photography) | BUILT (M1, M5 shot list) |
 | 7 | Launch pages | BUILT (M2–M5) |
 | 8 | Later divisions (built, flagged off) | BUILT (M6) |
-| 9 | Milestones and gates | DRAFT |
-| 10 | Definition of done | DRAFT |
+| 9 | Milestones and gates | BUILT (M1–M7 done) |
+| 10 | Definition of done | MET (see ops/VERIFY.md M7) |
 
 ## Build progress
 
-Current stage: M7 — Hardening — IN PROGRESS
-Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
+Current stage: COMPLETE
+Last updated: 2026-10-06T02:10:00Z · Last commit: see `git log -1`
 
 | Milestone | Status | Gate result | Notes |
 |---|---|---|---|
@@ -30,16 +30,10 @@ Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 | M4 Enquiry | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /book six steps + /book/done, Neon + Resend adapters, memory store, HUS refs, works without JS |
 | M5 Supporting + discovery | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | contact, draft policies, gated about, sitemap/robots/OG/JSON-LD, analytics contract |
 | M6 Flagged divisions | DONE | lint ✓ typecheck ✓ test ✓ build ✓ (launch + full) screenshots ✓ | business ×4, privacy ×3, recycle, knowledge, refurbished + builder, track; zero leakage under repair-core |
-| M7 Hardening | IN PROGRESS | — | |
+| M7 Hardening | DONE | lint ✓ typecheck ✓ test ✓ (98) build ✓ e2e ✓ (138 launch · 38 motherboard-only · 57 full) screenshots ✓ clean clone ✓ | independent review: 1 blocker + 1 major fixed, 11/13 minors fixed; Privacy/GrapheneOS added to launch |
 
 ### Current milestone checklist
-- [ ] Playwright e2e: route smoke + axe on every launch route; disabled-route 404s; profile leakage (repair-core, motherboard-only); keyboard-only enquiry; no-JS enquiry; 320px reflow; reduced motion; console errors
-- [ ] 200% zoom check on key flows
-- [ ] Perf pass: bundle/JS per route, Lighthouse-style checks on home and /book
-- [ ] Docs: README, docs/FEATURES.md, docs/CONTENT.md, docs/DEPLOY.md, docs/UNRESOLVED_BUSINESS_FACTS.md
-- [ ] vercel.json / env documentation, `npm audit` review
-- [ ] Fresh-subagent adversarial review of screenshots + running site; fix blockers and majors
-- [ ] Final gate: lint/typecheck/test/test:e2e/build; §10 checklist; tracker COMPLETE; push
+- [x] All M7 items complete; see ops/VERIFY.md (M7 parts 1–2) and ops/REVIEW.md
 
 ### Blocked / deferred
 - Neon adapter untested against a real database — needs `DATABASE_URL` (M4)

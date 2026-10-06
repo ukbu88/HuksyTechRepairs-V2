@@ -10,6 +10,7 @@ export interface ServerEnv {
   HUSKY_FLAGS_JSON: string | undefined;
   HUSKY_PREFLIGHT: string | undefined;
   HUSKY_ENQUIRY_STORE: string | undefined;
+  HUSKY_RATE_LIMIT: string | undefined;
   DATABASE_URL: string | undefined;
   RESEND_API_KEY: string | undefined;
   ENQUIRY_NOTIFY_TO: string | undefined;

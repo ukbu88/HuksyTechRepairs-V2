@@ -6,7 +6,7 @@ import { createUnconfiguredRepository } from '@/enquiries/adapters/unconfigured'
 import { createResendNotifier, buildNotification } from '@/enquiries/adapters/resend';
 import { createEnquiry } from '@/enquiries/service';
 import { buildEnquiryDeps } from '@/enquiries/container';
-import { createRateLimiter } from '@/enquiries/rate-limit';
+import { createRateLimiter, configuredRateLimit } from '@/enquiries/rate-limit';
 import { EnquiryStorageUnavailableError } from '@/enquiries/repository';
 import { logisticsOptions, parseState, resolveStep, stepUrl, validateStep } from '@/enquiries/flow';
 import { resolveFeatures } from '@/features/resolve';
@@ -183,6 +183,11 @@ describe('container', () => {
 });
 
 describe('rate limiter', () => {
+  it('defaults to 5 and accepts a positive integer override', () => {
+    expect(configuredRateLimit({})).toBe(5);
+    expect(configuredRateLimit({ HUSKY_RATE_LIMIT: '1000' })).toBe(1000);
+    expect(configuredRateLimit({ HUSKY_RATE_LIMIT: 'lots' })).toBe(5);
+  });
   it('allows up to the limit per window, then refuses, then resets', () => {
     const rl = createRateLimiter(2, 1000);
     expect(rl.allow('a', 0)).toBe(true);
@@ -250,5 +255,17 @@ describe('flow', () => {
     const url = stepUrl('contact', parseState({ help: 'phones' }));
     expect(url).not.toMatch(/email|name=/);
     expect(url).toContain('step=contact');
+  });
+});
+
+describe('fast-submit handling (reviewer blocker)', () => {
+  it('flags a fast submission in the notification instead of dropping it', () => {
+    const msg = buildNotification(
+      { ...valid, id: 'x', reference: 'HUS-000002', createdAt: new Date() },
+      'https://husky.test',
+      { fastSubmit: true, elapsedMs: 900 },
+    );
+    expect(msg.text).toMatch(/900 ms/);
+    expect(msg.text).toMatch(/possibly automated/);
   });
 });

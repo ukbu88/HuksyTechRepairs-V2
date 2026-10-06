@@ -52,7 +52,7 @@ Total slots: 20
 
 | Slot id | Aspect | What to shoot | Notes | Status |
 |---|---|---|---|---|
-| `privacy-grapheneos-setup` | 4:3 | A supported Pixel on the bench showing the GrapheneOS boot screen or installer. | Flagged-off division. Shoot only when Privacy launches. | ⬜ needed |
+| `privacy-grapheneos-setup` | 4:3 | A supported Pixel on the bench showing the GrapheneOS boot screen or installer. | Privacy is in the launch set; needed at launch. | ⬜ needed |
 
 ## /recycle
 

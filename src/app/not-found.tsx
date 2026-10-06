@@ -4,6 +4,8 @@ import { buildNav } from '@/routes/catalogue';
 import { Button } from '@/components/primitives/Button';
 import styles from './not-found.module.css';
 
+export const metadata = { title: 'Page not found', robots: { index: false, follow: true } };
+
 export default function NotFound() {
   const nav = buildNav(getFeatures());
   return (

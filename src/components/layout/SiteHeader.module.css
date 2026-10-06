@@ -45,6 +45,13 @@
 .action {
   font-size: 1rem;
   padding-inline: 0.9em;
+  white-space: nowrap;
+}
+@media (max-width: 359px) {
+  .action {
+    font-size: 0.9375rem;
+    padding-inline: 0.7em;
+  }
 }
 @media (min-width: 900px) {
   .primary {

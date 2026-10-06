@@ -18,14 +18,6 @@ export const metadata = {
   robots: status.reviewed ? { index: true, follow: true } : { index: false, follow: true },
 };
 
-function Todo({ children }: { children: string }) {
-  return (
-    <p>
-      <em>{children}</em>
-    </p>
-  );
-}
-
 export default function RepairTermsPage() {
   gateRoute(PATH);
   const entity = business.legalName ?? business.tradingName;
@@ -37,7 +29,12 @@ export default function RepairTermsPage() {
       <Section>
         <p className="eyebrow">Policies</p>
         <h1>Repair terms</h1>
-        {!status.reviewed ? <DraftNotice version={status.version} /> : null}
+        {!status.reviewed ? (
+          <DraftNotice
+            version={status.version}
+            pending="Sections on fees, warranty, collection of uncollected devices and liability are added once Husky confirms them; nothing on this site should be read as a promise on those points until then."
+          />
+        ) : null}
         <div className="prose">
           <p>
             These terms describe how {entity} ("Husky", "we") handles a repair from enquiry to
@@ -55,22 +52,14 @@ export default function RepairTermsPage() {
             We diagnose before we quote. Diagnosis tells you what has failed and whether a repair is
             sensible; it does not guarantee that a repair is possible or economic.
           </p>
-          {business.diagnosticFeePolicy ? (
-            <p>{business.diagnosticFeePolicy}</p>
-          ) : (
-            <Todo>Diagnostic fee policy: to be confirmed by Husky.</Todo>
-          )}
+          {business.diagnosticFeePolicy ? <p>{business.diagnosticFeePolicy}</p> : null}
 
           <h2>3. Quotes and approval</h2>
           <p>
             After diagnosis you receive a plain-English explanation and your options. No repair work
             starts until you approve it.
           </p>
-          {business.quoteApprovalRule ? (
-            <p>{business.quoteApprovalRule}</p>
-          ) : (
-            <Todo>Quote validity and approval method: to be confirmed by Husky.</Todo>
-          )}
+          {business.quoteApprovalRule ? <p>{business.quoteApprovalRule}</p> : null}
 
           <h2>4. Parts</h2>
           <p>We tell you which category of part we intend to use before you approve a repair.</p>
@@ -82,9 +71,7 @@ export default function RepairTermsPage() {
                 </li>
               ))}
             </ul>
-          ) : (
-            <Todo>Parts categories and their definitions: to be confirmed by Husky.</Todo>
-          )}
+          ) : null}
 
           <h2>5. Your data</h2>
           <p>
@@ -93,23 +80,16 @@ export default function RepairTermsPage() {
             Board-level repairs on devices with soldered storage carry a risk to data that we will
             explain case by case.
           </p>
-          {business.dataHandlingGuidance ? (
-            <p>{business.dataHandlingGuidance}</p>
-          ) : (
-            <Todo>Data handling statement: to be confirmed by Husky.</Todo>
-          )}
+          {business.dataHandlingGuidance ? <p>{business.dataHandlingGuidance}</p> : null}
 
-          <h2>6. Warranty</h2>
           {business.warrantyTerms ? (
-            <p>{business.warrantyTerms}</p>
-          ) : (
-            <Todo>
-              Warranty duration and exclusions by repair type: to be confirmed by Husky. Nothing on
-              this site should be read as a warranty promise until this section is completed.
-            </Todo>
-          )}
+            <>
+              <h2>6. Warranty</h2>
+              <p>{business.warrantyTerms}</p>
+            </>
+          ) : null}
 
-          <h2>7. If it can't be repaired</h2>
+          <h2>{business.warrantyTerms ? '7' : '6'}. If it can’t be repaired</h2>
           <p>
             If a device cannot be repaired, or a repair would not be sensible, we tell you with the
             reason and return the device in the state it arrived in, as far as the diagnosis allows.
@@ -117,18 +97,13 @@ export default function RepairTermsPage() {
             reversed; we tell you before taking them where there is a choice.
           </p>
 
-          <h2>8. Collection and uncollected devices</h2>
-          <Todo>
-            Collection window and what happens to uncollected devices: to be confirmed by Husky.
-          </Todo>
+          <h2>{business.warrantyTerms ? '8' : '7'}. Consumer guarantees</h2>
+          <p>
+            Nothing in these terms limits the guarantees that apply under the Australian Consumer
+            Law.
+          </p>
 
-          <h2>9. Liability</h2>
-          <Todo>
-            Liability wording requires Husky's review and, where appropriate, professional advice.
-            Australian Consumer Law guarantees apply regardless of these terms.
-          </Todo>
-
-          <h2>10. Changes</h2>
+          <h2>{business.warrantyTerms ? '9' : '8'}. Changes</h2>
           <p>The version and review status of these terms appear at the top of the page.</p>
         </div>
       </Section>

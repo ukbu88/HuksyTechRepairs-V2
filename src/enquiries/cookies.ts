@@ -16,6 +16,7 @@ export const DraftCookieSchema = z.object({
   name: z.string().optional(),
   email: z.string().optional(),
   phone: z.string().optional(),
+  consent: z.boolean().optional(),
   errors: z.record(z.string(), z.string()).optional(),
   reason: z.enum(['validation', 'storage', 'rate-limit']).optional(),
 });

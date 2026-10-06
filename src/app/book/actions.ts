@@ -47,11 +47,11 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
     redirect('/book/done');
   }
 
-  // Minimum time on the contact step.
+  // Time on the contact step. A very fast submission is a bot signal, but a real person
+  // with autofill can be fast too, so it is recorded for Husky rather than rejected.
   const t0 = Number(str(formData, 't0'));
-  if (!Number.isFinite(t0) || Date.now() - t0 < MIN_SUBMIT_MS) {
-    redirect('/book/done');
-  }
+  const elapsedMs = Number.isFinite(t0) ? Date.now() - t0 : null;
+  const fastSubmit = elapsedMs === null || elapsedMs < MIN_SUBMIT_MS;
 
   const hdrs = await headers();
   const ip =
@@ -60,6 +60,7 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
     name: str(formData, 'name'),
     email: str(formData, 'email'),
     phone: str(formData, 'phone'),
+    consent: str(formData, 'consent') === 'yes',
   };
 
   if (!enquiryRateLimiter.allow(ip)) {
@@ -112,6 +113,8 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
     const { enquiry, notified } = await createEnquiry(parsed.data, deps, {
       userAgent: hdrs.get('user-agent') ?? undefined,
       store: deps.repository.name,
+      elapsedMs,
+      fastSubmit,
     });
     outcome = { ok: true, reference: enquiry.reference, notified };
   } catch (error) {

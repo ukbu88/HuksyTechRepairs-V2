@@ -28,7 +28,9 @@ export function generateStaticParams(): Params[] {
   return DEVICE_CATEGORY_SLUGS.map((category) => ({ category }));
 }
 
-export const dynamicParams = false;
+// Unknown slugs render on demand and hit notFound(): a clean 404 without Next's internal
+// NoFallbackError log that `dynamicParams = false` produces.
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: { params: Promise<Params> }) {
   const { category } = await params;

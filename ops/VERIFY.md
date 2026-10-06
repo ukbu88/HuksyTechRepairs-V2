@@ -118,3 +118,29 @@ Open: Vercel/Neon credentials still absent; division copy awaits Prince's facts 
 - `npm audit`: one high advisory (`braces`, via eslint-config-next's dev-only chain). Not in the shipped bundle; documented in README and DEPLOY.
 - `full` profile built into its own dist dir and tested on rendered pages: 57 passed (every division route live and axe-clean, no console errors, coherent homepage).
 - Clean clone of `origin/main` in a fresh directory: `npm ci`, lint, typecheck, 95 unit tests and a strict production build (stand-in credentials) all pass; a strict build without credentials fails with the four named preflight errors, as designed.
+
+## M7 — Hardening (part 2: independent review and resolution)
+
+A fresh subagent that had not seen the build reviewed the screenshots and attacked the running site (Canon §29, Build Command §3 and §29, BUILD_PLAN §10). Its report is `ops/REVIEW.md`. Verdict: FIX THEN SHIP — 1 blocker, 1 major, 13 minors. Resolution:
+
+| # | Severity | Finding | Resolution |
+|---|---|---|---|
+| 1 | Blocker | A valid enquiry submitted under 2.5 s after the contact step rendered (autofill, or a resubmit after an error) was silently redirected to "No recent enquiry" and never stored. | Fixed. The minimum-time check no longer rejects. It records `elapsedMs`/`fastSubmit` in the case metadata and the Husky notification carries a "possibly automated, worth a second look" note. Honeypot and rate limit unchanged. e2e: a fast valid submission now yields a HUS reference. |
+| 2 | Major | Public draft policies carried italic "to be confirmed by Husky" lines for fees, warranty, collection, liability, retention and a privacy contact; the consent checkbox pointed at that page. | Fixed per "unknown = absent": those sections are omitted until the fact exists (the draft notice says which sections are still to come); mail-in sentence removed; privacy requests route to the enquiry or a reply to any case email. Draft banner retained as BUILD_PLAN §7 requires; pages stay noindex and out of the sitemap until reviewed. |
+| 3 | Minor | Consent checkbox not restored after a validation/storage error. | Fixed; name, email, phone and consent are restored. e2e added. |
+| 4 | Minor | Duplicate `role="alert"`; focus not moved to the error summary. | Partly fixed: one alert, field errors are plain text with valid ids, and the summary is announced. Focus is not moved (React does not autofocus a div, and the flow ships no client JS for the form); the summary sits directly under the heading, above the fields. |
+| 5 | Minor | Mobile menu didn't close on Escape or outside tap. | Fixed (progressive enhancement; still works without JS). e2e added for Escape. |
+| 6 | Minor | Back from /book/done showed the confirmation under the form URL. | Consequence of the blocker's redirect; resolved with it. |
+| 7 | Minor | 404 page used the homepage title. | Fixed: "Page not found · Husky Tech Repairs", noindex. |
+| 8 | Minor | Explainer SVG labels ~7 px at 360 px. | Labels raised (15–16 px in the SVG's own units, ~10 px at 360); decorative, the notes carry the content. |
+| 9 | Minor | Header "Start a repair" wrapped at 320 px. | Fixed: nowrap and a smaller size under 360 px. |
+| 10 | Minor | Preload warnings (404 mascot + two CSS chunks preloaded but unused). | Not fixed: Next preloads the not-found boundary's assets on every page; a console warning only, no user impact. Noted. |
+| 11 | Minor | Privacy policy mentioned mail-in "once offered" and asserted Neon/Vercel/Resend. | Mail-in sentence removed. Providers kept: they are the real providers the site is built for (BUILD_PLAN §2.3). |
+| 12 | Minor | "Reply by email / plain-English updates" vs the M1 decision to drop "we reply by email" from the footer. | Rail wording changed to "plain-English answers". Reply-by-email remains where it is the mechanism of the form (the email field is "where the reply goes"); no timing is promised anywhere. |
+| 13 | Minor | Rate limiter trusts `x-forwarded-for`. | Accepted: on Vercel the header is platform-set; documented as a soft brake. Limit is now configurable (`HUSKY_RATE_LIMIT`) so test runs don't trip it; production default stays 5 / 10 min. |
+| 14 | Minor | `/favicon.ico` 404. | Fixed: `public/favicon.ico` (PNG-in-ICO rendered from the SVG mark). |
+| 15 | Minor | Sitemap `lastmod` was the build time for every URL. | Fixed: no `lastmod`. |
+
+Also fixed during this gate: unknown dynamic slugs (`/repair/<unknown>`, `/knowledge/<unknown>`) now render on demand and call `notFound()` so production logs don't carry Next's internal `NoFallbackError`; the e2e suite runs with lower parallelism and a 60 s per-test budget so timing never masquerades as a product fault.
+
+Launch scope change (Prince, mid-build): the Privacy / GrapheneOS pages are in the launch set via a new default profile `launch` (repair-core + privacy + grapheneOs). Screenshots: `ops/screenshots/M7/` (home, /privacy, /privacy/grapheneos, /privacy/devices, policies, 404, motherboard explainer).
