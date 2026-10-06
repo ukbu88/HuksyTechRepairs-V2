@@ -24,6 +24,7 @@ test.describe(`profile ${testProfile()}`, () => {
     expect(html.includes('id="help-fleet"')).toBe(features.isEnabled('business'));
     expect(html.includes('id="help-recycle"')).toBe(features.isEnabled('recycling'));
     expect(html.includes('id="help-motherboard"')).toBe(features.isEnabled('motherboardRepair'));
+    expect(html.includes('id="help-privacy-phone"')).toBe(features.isEnabled('privacy'));
   });
 
   test('enquiry logistics step offers only enabled options', async ({ request }) => {

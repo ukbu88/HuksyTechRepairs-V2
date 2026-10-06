@@ -7,6 +7,7 @@ import type { FeatureKey } from './registry.ts';
 export const PROFILE_NAMES = [
   'motherboard-only',
   'repair-core',
+  'launch',
   'repair-plus-business',
   'full-minus-refurb',
   'full',
@@ -14,7 +15,8 @@ export const PROFILE_NAMES = [
 
 export type ProfileName = (typeof PROFILE_NAMES)[number];
 
-export const DEFAULT_PROFILE: ProfileName = 'repair-core';
+/** Prince's launch scope (2026-10-06): repair-core plus the Privacy / GrapheneOS pages. */
+export const DEFAULT_PROFILE: ProfileName = 'launch';
 
 const ALL: readonly FeatureKey[] = [
   'repair',
@@ -43,8 +45,12 @@ export const PROFILES: Record<
     enabled: ['motherboardRepair', 'booking'],
   },
   'repair-core': {
-    description: 'Launch set: consumer repair + motherboard repairs + enquiry.',
+    description: 'Consumer repair + motherboard repairs + enquiry.',
     enabled: ['repair', 'motherboardRepair', 'booking'],
+  },
+  launch: {
+    description: 'Launch set: repair-core plus Privacy and GrapheneOS pages.',
+    enabled: ['repair', 'motherboardRepair', 'booking', 'privacy', 'grapheneOs'],
   },
   'repair-plus-business': {
     description: 'Launch set plus Business, Schools and Trade partners.',

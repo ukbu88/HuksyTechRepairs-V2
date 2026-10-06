@@ -4,7 +4,7 @@ const port = Number(process.env.PORT ?? 3000);
 const baseURL = `http://127.0.0.1:${port}`;
 const distDir = process.env.HUSKY_DIST_DIR ?? '.next';
 /** The profile the server under test was built with; specs adapt their expectations. */
-const profile = process.env.HUSKY_LAUNCH_PROFILE ?? 'repair-core';
+const profile = process.env.HUSKY_LAUNCH_PROFILE ?? 'launch';
 
 export default defineConfig({
   testDir: './tests/e2e',

@@ -11,6 +11,7 @@ export const HELP_OPTIONS = [
     value: 'motherboard',
     label: 'Something board-level (told it’s dead, or a part swap didn’t fix it)',
   },
+  { value: 'privacy-phone', label: 'A phone to set up for privacy (GrapheneOS)' },
   { value: 'fleet', label: 'Several devices for a business or school' },
   { value: 'recycle', label: 'Old devices to reuse or recycle' },
   { value: 'other', label: 'Something else' },
@@ -19,9 +20,10 @@ export const HELP_OPTIONS = [
 
 /** Help options that only appear while their division is enabled. */
 export const HELP_OPTION_FEATURES: Partial<
-  Record<HelpValue, 'motherboardRepair' | 'business' | 'recycling'>
+  Record<HelpValue, 'motherboardRepair' | 'business' | 'recycling' | 'privacy'>
 > = {
   motherboard: 'motherboardRepair',
+  'privacy-phone': 'privacy',
   fleet: 'business',
   recycle: 'recycling',
 };
@@ -50,6 +52,15 @@ const FLEET: SymptomOption[] = [
   { value: 'other', label: 'Something else (describe below)' },
 ];
 
+const PRIVACY_PHONE: SymptomOption[] = [
+  { value: 'install-mine', label: 'Install GrapheneOS on a phone I already own' },
+  { value: 'buy-configured', label: 'Buy a phone already set up with GrapheneOS' },
+  { value: 'compatibility', label: 'Check whether my phone is compatible' },
+  { value: 'tradeoffs', label: 'Questions about what I would lose (apps, banking, payments)' },
+  { value: 'setup-help', label: 'Help setting up or using a GrapheneOS phone' },
+  { value: 'other', label: 'Something else (describe below)' },
+];
+
 const RECYCLE: SymptomOption[] = [
   { value: 'working', label: 'Still works, just old' },
   { value: 'broken', label: 'Broken, not worth repairing to me' },
@@ -59,9 +70,10 @@ const RECYCLE: SymptomOption[] = [
 ];
 
 const BY_CATEGORY: Record<
-  DeviceCategorySlug | 'motherboard' | 'fleet' | 'recycle',
+  DeviceCategorySlug | 'motherboard' | 'fleet' | 'recycle' | 'privacy-phone',
   SymptomOption[]
 > = {
+  'privacy-phone': PRIVACY_PHONE,
   fleet: FLEET,
   recycle: RECYCLE,
   phones: [

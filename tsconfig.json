@@ -50,7 +50,9 @@
     ".next-motherboard-only/types/**/*.ts",
     ".next-motherboard-only/dev/types/**/*.ts",
     ".next-full/types/**/*.ts",
-    ".next-full/dev/types/**/*.ts"
+    ".next-full/dev/types/**/*.ts",
+    ".next-launch/types/**/*.ts",
+    ".next-launch/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

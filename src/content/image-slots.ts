@@ -152,7 +152,7 @@ export const IMAGE_SLOTS: readonly ImageSlotDefinition[] = [
     aspect: '4:3',
     brief: 'A supported Pixel on the bench showing the GrapheneOS boot screen or installer.',
     alt: 'A Pixel phone on the bench during GrapheneOS installation.',
-    notes: 'Flagged-off division. Shoot only when Privacy launches.',
+    notes: 'Privacy is in the launch set; needed at launch.',
   },
   {
     id: 'recycle-harvest',

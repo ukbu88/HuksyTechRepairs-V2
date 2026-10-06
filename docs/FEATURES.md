@@ -19,7 +19,8 @@ Overrides win over the profile. A feature whose dependency is off is forced off 
 | Profile | Enabled |
 |---|---|
 | `motherboard-only` | motherboardRepair, booking |
-| `repair-core` (launch, default) | repair, motherboardRepair, booking |
+| `repair-core` | repair, motherboardRepair, booking |
+| `launch` (default) | repair, motherboardRepair, booking, privacy, grapheneOs |
 | `repair-plus-business` | + business, schools, tradePartners |
 | `full-minus-refurb` | everything except refurbished, refurbBuilder |
 | `full` | everything |
@@ -34,8 +35,8 @@ Overrides win over the profile. A feature whose dependency is off is forced off 
 | `business` | `HUSKY_FEATURE_BUSINESS` | off | `/business` | Primary "Business"; home section | Route | — | No SLAs/volumes/response times (Canon §12) |
 | `schools` | `HUSKY_FEATURE_SCHOOLS` | off | `/business/schools` | Link from `/business` | Route | business | |
 | `tradePartners` | `HUSKY_FEATURE_TRADE_PARTNERS` | off | `/business/it-providers`, `/business/repair-partners` | Links from `/business` | Routes | business, motherboardRepair | Trade model (referral/white-label) from `business.tradeEscalationModel` |
-| `privacy` | `HUSKY_FEATURE_PRIVACY` | off | `/privacy` | Primary "Privacy"; home section | Route | — | No absolute claims; hardware mods listed only when confirmed |
-| `grapheneOs` | `HUSKY_FEATURE_GRAPHENE_OS` | off | `/privacy/grapheneos`, `/privacy/devices` | Links from `/privacy` | Routes | privacy | Device list is dated records in `src/content/privacy-devices.ts` |
+| `privacy` | `HUSKY_FEATURE_PRIVACY` | on | `/privacy` | Primary "Privacy"; home section | Route | — | No absolute claims; hardware mods listed only when confirmed |
+| `grapheneOs` | `HUSKY_FEATURE_GRAPHENE_OS` | on | `/privacy/grapheneos`, `/privacy/devices` | Links from `/privacy` | Routes | privacy | Device list is dated records in `src/content/privacy-devices.ts` |
 | `recycling` | `HUSKY_FEATURE_RECYCLING` | off | `/recycle` | Footer "Recycling"; home section; enquiry option | Route | — | Hierarchy only; no outcome claims |
 | `knowledge` | `HUSKY_FEATURE_KNOWLEDGE` | off | `/knowledge`, `/knowledge/[slug]` | Primary "Knowledge"; home section | Index + Article JSON-LD for published articles | — | Zero published articles; draft fixture is dev-only |
 | `refurbished` | `HUSKY_FEATURE_REFURBISHED` | off | `/refurbished` | Primary "Refurbished"; home section | Route | — | Production shows real inventory only (none yet) |

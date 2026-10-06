@@ -2,7 +2,7 @@
 
 Everything the site needs from Husky before it can state it. Each item is a TODO in `src/config/business.ts` (or where noted). Until supplied, the site omits the fact; nothing is invented (Canon §29, §32).
 
-## Required before launch (`repair-core`)
+## Required before launch (`launch` profile)
 
 | Fact | Where it goes | Config field |
 |---|---|---|
@@ -19,6 +19,7 @@ Everything the site needs from Husky before it can state it. Each item is a TODO
 | Data handling / backup guidance | Repair pages, privacy policy, repair terms | `dataHandlingGuidance` |
 | Production domain | Canonicals, sitemap, OG | env `NEXT_PUBLIC_SITE_URL` |
 | Credentials | Enquiries | env `DATABASE_URL`, `RESEND_API_KEY`, `ENQUIRY_NOTIFY_TO`, `ENQUIRY_NOTIFY_FROM` |
+| GrapheneOS compatible-device records, dated against the official list (`src/content/privacy-devices.ts`); which hardware modifications Husky performs (`HARDWARE_MODIFICATIONS_CONFIRMED`) | `/privacy/devices`, `/privacy` | content file |
 | Privacy policy review (retention period, request contact) | `/policies/privacy` | `src/content/policies.ts` + page text |
 | Repair terms review (collection window, uncollected devices, liability) | `/policies/repair-terms` | `src/content/policies.ts` + page text |
 | Photos | Every `ImageSlot` | `docs/SHOT_LIST.md` → `public/photos/` |
@@ -37,7 +38,6 @@ Everything the site needs from Husky before it can state it. Each item is a TODO
 | Division | Needed |
 |---|---|
 | Business / Schools / Trade partners | Trade escalation model (`tradeEscalationModel`); any real operational promises (none are made today); business invoicing/payment terms |
-| Privacy / GrapheneOS | Dated compatible-device records (`src/content/privacy-devices.ts`), checked against the official GrapheneOS list; which hardware modifications Husky actually performs (`HARDWARE_MODIFICATIONS_CONFIRMED`) |
 | Recycling | Recycling partners/process, battery handling, data-destruction process, any trade-in credit |
 | Knowledge | First real article from a real repair |
 | Refurbished / builder | Real inventory records, confirmed grade criteria and reference photos, warranty/returns policy, payment/checkout provider |

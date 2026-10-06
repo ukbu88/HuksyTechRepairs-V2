@@ -1,6 +1,6 @@
 # Husky Tech Repairs — website
 
-The public website for Husky Tech Repairs (Brisbane): consumer repairs, motherboard repairs and the repair enquiry. Other divisions (Business, Privacy/GrapheneOS, Recycling, Knowledge, Refurbished, Repair tracking, pickup and mail-in) are built and switched off behind feature flags.
+The public website for Husky Tech Repairs (Brisbane): consumer repairs, motherboard repairs, the repair enquiry, and the Privacy / GrapheneOS pages. Other divisions (Business, Recycling, Knowledge, Refurbished, Repair tracking, pickup and mail-in) are built and switched off behind feature flags.
 
 Next.js 16 (App Router, React Server Components), strict TypeScript, CSS Modules on design tokens, Zod at every boundary, Vitest + Playwright, deployed on Vercel. No CMS, no UI kit, no Tailwind.
 
@@ -52,7 +52,7 @@ Copy `.env.example`. Everything is read in one place, `src/config/env.ts`.
 | Variable | Required | Purpose |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | production | Canonical origin for metadata, sitemap, robots, JSON-LD. `https://…`, no trailing slash |
-| `HUSKY_LAUNCH_PROFILE` | no (default `repair-core`) | Launch profile preset: `motherboard-only`, `repair-core`, `repair-plus-business`, `full-minus-refurb`, `full` |
+| `HUSKY_LAUNCH_PROFILE` | no (default `launch`) | Launch profile preset: `motherboard-only`, `repair-core`, `launch` (repair-core + Privacy/GrapheneOS), `repair-plus-business`, `full-minus-refurb`, `full` |
 | `HUSKY_FEATURE_<KEY>` | no | Per-feature override, `on`/`off`, wins over the profile. Example: `HUSKY_FEATURE_BUSINESS=on` |
 | `HUSKY_FLAGS_JSON` | no | A JSON document `{ "profile": …, "features": { … } }` for a remote flag store adapter |
 | `DATABASE_URL` | production | Neon Postgres connection string. Run `db/migrations/0001_enquiries.sql` once |

@@ -77,7 +77,7 @@ Working records (short; they exist to stop re-litigating, not as deliverables):
 
 ### 2.1 Launch set — AGREED
 
-Launch enabled: **consumer repair + motherboard repair + enquiry (booking)**.
+Launch enabled: **consumer repair + motherboard repair + enquiry (booking)** — plus, per Prince's direction on 2026-10-06, **Privacy / GrapheneOS** (profile `launch`; see ops/DECISIONS.md).
 
 Built behind feature flags, switched **off** at launch: refurbished + builder, privacy + GrapheneOS, business (+ schools, trade partners), recycling, knowledge, repair tracking, pickup, mail-in. How far each of these is built is decided in §8.
 

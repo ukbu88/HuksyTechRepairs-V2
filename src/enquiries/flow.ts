@@ -55,6 +55,7 @@ export function parseState(params: SearchParams): RawState {
   if (!help && device) help = device;
   if (!help && intent === 'motherboard') help = 'motherboard';
   if (!help && intent === 'business') help = 'fleet';
+  if (!help && intent === 'privacy') help = 'privacy-phone';
   if (!help && intent === 'recycle') help = 'recycle';
   return {
     intent,

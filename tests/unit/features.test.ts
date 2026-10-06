@@ -24,10 +24,24 @@ describe('feature registry', () => {
 });
 
 describe('resolveFeatures', () => {
-  it('defaults to the launch profile (repair-core)', () => {
+  it('defaults to the launch profile: repair-core plus Privacy/GrapheneOS', () => {
     const s = resolveFeatures();
-    expect(s.profile).toBe('repair-core');
-    expect(s.enabledKeys()).toEqual(['repair', 'motherboardRepair', 'booking']);
+    expect(s.profile).toBe('launch');
+    expect(s.enabledKeys()).toEqual([
+      'repair',
+      'motherboardRepair',
+      'booking',
+      'privacy',
+      'grapheneOs',
+    ]);
+  });
+
+  it('repair-core stays the narrower preset', () => {
+    expect(resolveFeatures({ profile: 'repair-core' }).enabledKeys()).toEqual([
+      'repair',
+      'motherboardRepair',
+      'booking',
+    ]);
   });
 
   it('motherboard-only enables exactly motherboard repair + booking', () => {

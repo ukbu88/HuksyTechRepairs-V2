@@ -4,8 +4,8 @@ import { availableRoutes, unavailableRoutes, buildNav } from '../../src/routes/c
 
 /** The profile the server under test was built with (see playwright.config.ts). */
 export function testProfile(): ProfileName {
-  const raw = process.env.HUSKY_LAUNCH_PROFILE ?? 'repair-core';
-  return isProfileName(raw) ? raw : 'repair-core';
+  const raw = process.env.HUSKY_LAUNCH_PROFILE ?? 'launch';
+  return isProfileName(raw) ? raw : 'launch';
 }
 
 export const features = resolveFeatures({ profile: testProfile() });

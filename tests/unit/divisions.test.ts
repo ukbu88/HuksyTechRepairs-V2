@@ -106,6 +106,8 @@ describe('enquiry options cascade with divisions', () => {
     expect(HELP_OPTION_FEATURES.fleet).toBe('business');
     expect(HELP_OPTION_FEATURES.recycle).toBe('recycling');
     expect(HELP_OPTION_FEATURES.motherboard).toBe('motherboardRepair');
+    expect(HELP_OPTION_FEATURES['privacy-phone']).toBe('privacy');
+    expect(parseState({ intent: 'privacy' }).help).toBe('privacy-phone');
     expect(HELP_OPTIONS.some((o) => o.value === 'fleet')).toBe(true);
     expect(symptomsFor('fleet').length).toBeGreaterThan(3);
   });

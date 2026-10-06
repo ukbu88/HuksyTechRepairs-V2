@@ -28,7 +28,7 @@ Set these in Vercel → Project → Settings → Environment Variables. Producti
 | Variable | Production | Preview |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | `https://<your-domain>` | the preview URL or the production URL |
-| `HUSKY_LAUNCH_PROFILE` | `repair-core` | as needed (`full` to review flagged divisions) |
+| `HUSKY_LAUNCH_PROFILE` | `launch` | as needed (`full` to review flagged divisions) |
 | `DATABASE_URL` | from Neon | from Neon |
 | `RESEND_API_KEY` | from Resend | from Resend |
 | `ENQUIRY_NOTIFY_TO` | Husky's inbox | a test inbox |
