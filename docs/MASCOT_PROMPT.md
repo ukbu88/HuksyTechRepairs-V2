@@ -46,3 +46,35 @@ Variations to try afterwards:
 - "Same character as a 16-frame sprite strip, waving." (if an animated version is ever wanted)
 
 Dropping the result into the site: export the chosen poses as SVG (or trace them), name them `logo-mark.svg`, `mascot-neutral.svg`, `mascot-magnifier.svg`, `mascot-confused.svg`, `favicon.svg` and replace the files in `public/brand/`. No code change.
+
+## Revision prompt: make it unmistakably a Siberian husky
+
+The first sheet read as a generic cute dog. Attach it and paste this:
+
+```
+Redraw this character sheet so the mascot is unmistakably a SIBERIAN HUSKY. Keep the flat "sticker" style, the thick #121212 ink outlines, the white background, the exact colours (#121212, #FFFFFF, #F25C05, #FFE4D3, #FAF8F4, #B8B3AA; no blue, no gradients) and the same sheet layout (head turnaround, six expressions, four full-body poses, swatches, app icon, B&W icon, sticker). Change the anatomy and markings as follows.
+
+HEAD AND FACE (the important part)
+- Classic Siberian husky mask: dark cap over the top of the head and down the sides of the face, white muzzle and cheeks, and a white "mask" around the eyes that rises into a point between the eyes up the forehead (widow's peak). The dark cap must come down over the eyes like goggles, with the white mask inside it.
+- Two small white "eyebrow" spots above the eyes inside the dark cap. This is the single most recognisable husky marking. Always draw them.
+- Almond-shaped eyes, slightly tilted, not round. Draw them as "ice eyes": white iris with a ring and pupil in #121212, so they read as pale husky eyes without using blue.
+- A medium-length muzzle with a dark nose at the end, clearly longer than a cat's. White muzzle, white chin. The current drawing is too short and kitten-like.
+- Erect triangular ears set high on the head, thickly furred, with slightly rounded tips and #F25C05 inner ears. Not oversized.
+- Thick neck ruff of fur around the collar.
+
+BODY
+- Athletic, wolf-like proportions: deeper chest, longer legs, big round paws. Not a plush toy, not chibi.
+- Bushy sickle-shaped tail carried curled up over the back, white underneath, dark on top.
+- Two-tone coat: dark back and sides, white chest, belly, legs and tail underside.
+- Orange collar stays. Optional small screwdriver behind one ear.
+
+EXPRESSIONS AND POSES (unchanged list, same character in every one)
+Neutral, happy, curious, focused (magnifier), puzzled (head tilt, one ear folded, small "?"), fixed!. Full body: standing, investigating with a magnifier, holding a phone with a cracked screen, puzzled "page not found".
+
+RULES
+- Still an original character, not based on any existing mascot.
+- Must read as a husky at 32 px: the mask, eyebrow spots and ears are the priority at small sizes.
+- Flat shapes only, simple enough to redraw as SVG paths. No texture, no shading beyond one flat tone, no human clothes, no neon, no meme faces.
+```
+
+Check: cover the body and look at the face alone. Mask + eyebrow spots + almond eyes should say "husky" on their own.
