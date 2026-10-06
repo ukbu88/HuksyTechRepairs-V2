@@ -18,7 +18,7 @@ export function organizationJsonLd(business: Business, siteUrl: string): JsonLd 
     '@id': `${siteUrl}/#organization`,
     name: business.tradingName,
     url: siteUrl,
-    logo: `${siteUrl}/brand/logo-mark.svg`,
+    logo: `${siteUrl}/brand/icon-512.png`,
     areaServed: business.city,
   };
   if (business.legalName) base.legalName = business.legalName;

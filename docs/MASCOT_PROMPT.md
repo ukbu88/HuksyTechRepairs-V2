@@ -78,3 +78,17 @@ RULES
 ```
 
 Check: cover the body and look at the face alone. Mask + eyebrow spots + almond eyes should say "husky" on their own.
+
+## Result (2026-10-06)
+
+The fourth sheet landed: an unmistakable Siberian husky (mask, eyebrow spots, almond eyes, sickle tail) in the site palette, with a 32 px icon, a friendly head, six expressions and four body poses. The poses were cut from the sheet, their white background knocked out, and installed as PNGs in `public/brand/`:
+
+| File | Used on |
+|---|---|
+| `logo-mark.png`, `icon-192.png`, `icon-512.png`, `/favicon.ico` | header, favicon, OG image, JSON-LD logo |
+| `mascot-neutral.png` (standing) | homepage final CTA |
+| `mascot-magnifier.png` | enquiry confirmation |
+| `mascot-confused.png` (puzzled, with "?") | 404 page |
+| `mascot-phone.png`, `friendly-head.png` | spare, not placed yet |
+
+Next step when wanted: have the sheet traced to SVG (same filenames, `.svg`, and update the four `src` paths) for crisp scaling at any size. Keep the original sheet image with the brand files.

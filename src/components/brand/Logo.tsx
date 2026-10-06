@@ -9,8 +9,8 @@ interface LogoProps {
 }
 
 /**
- * Logo mark + wordmark. The mark is a standalone SVG in public/brand so an
- * illustrator can replace it without touching code.
+ * Logo mark + wordmark. The mark is a standalone file in public/brand so it can be
+ * replaced without touching code.
  */
 export function Logo({ name, href = '/', size = 'md' }: LogoProps) {
   return (
@@ -19,8 +19,8 @@ export function Logo({ name, href = '/', size = 'md' }: LogoProps) {
       className={[styles.logo, styles[size]].join(' ')}
       aria-label={`${name} — home`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element -- static SVG, no optimisation needed */}
-      <img src="/brand/logo-mark.svg" alt="" width={44} height={44} className={styles.mark} />
+      {/* eslint-disable-next-line @next/next/no-img-element -- small static brand asset */}
+      <img src="/brand/logo-mark.png" alt="" width={42} height={44} className={styles.mark} />
       <span className={styles.wordmark}>
         <span className={styles.husky}>Husky</span>
         <span className={styles.tech}>Tech Repairs</span>

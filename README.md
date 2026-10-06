@@ -81,7 +81,7 @@ See `docs/CONTENT.md`. Short version: business facts in `src/config/business.ts`
 ## Photos, mascot, logo
 
 - Photos: drop a file at `public/photos/<slot-id>.jpg` (or `.webp`/`.png`) for any slot in `docs/SHOT_LIST.md`. The site picks it up on the next build; no code change.
-- Mascot and logo: standalone SVGs in `public/brand/` (`logo-mark.svg`, `favicon.svg`, `mascot-neutral.svg`, `mascot-magnifier.svg`, `mascot-confused.svg`). Replace the files; keep the names.
+- Mascot and logo: standalone files in `public/brand/` (`logo-mark.png`, `mascot-neutral.png`, `mascot-magnifier.png`, `mascot-confused.png`, `mascot-phone.png`, `friendly-head.png`, `icon-192.png`, `icon-512.png`) plus `public/favicon.ico`. They are cut from the character sheet in `docs/MASCOT_PROMPT.md`; a vector version can replace them with the same names, no code change.
 
 ## Enquiries (booking provider setup)
 

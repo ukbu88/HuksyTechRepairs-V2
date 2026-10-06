@@ -12,9 +12,9 @@ export default async function OpenGraphImage() {
   const fontsDir = path.join(process.cwd(), 'src', 'fonts');
   const [display, mark] = await Promise.all([
     readFile(path.join(fontsDir, 'bricolage-grotesque-latin-800-normal.woff')),
-    readFile(path.join(process.cwd(), 'public', 'brand', 'logo-mark.svg'), 'utf8'),
+    readFile(path.join(process.cwd(), 'public', 'brand', 'logo-mark.png')),
   ]);
-  const markSrc = `data:image/svg+xml;base64,${Buffer.from(mark).toString('base64')}`;
+  const markSrc = `data:image/png;base64,${mark.toString('base64')}`;
   return new ImageResponse(
     <div
       style={{
@@ -31,7 +31,7 @@ export default async function OpenGraphImage() {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-        <img src={markSrc} width={96} height={96} alt="" />
+        <img src={markSrc} width={91} height={96} alt="" />
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 44, lineHeight: 1 }}>{business.tradingName}</div>
           <div style={{ fontSize: 24, letterSpacing: 2, marginTop: 8 }}>

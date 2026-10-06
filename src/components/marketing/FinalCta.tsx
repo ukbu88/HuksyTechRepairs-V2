@@ -35,8 +35,8 @@ export function FinalCta({ title, body, primary, secondary, mascot }: FinalCtaPr
         </div>
         {mascot ? (
           <div className={styles.mascot}>
-            {/* eslint-disable-next-line @next/next/no-img-element -- static SVG mascot */}
-            <img src={`/brand/mascot-${mascot}.svg`} alt="" width={200} height={280} />
+            {/* eslint-disable-next-line @next/next/no-img-element -- static mascot asset */}
+            <img src={`/brand/mascot-${mascot}.png`} alt="" width={220} height={278} />
           </div>
         ) : null}
       </div>

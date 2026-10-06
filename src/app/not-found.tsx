@@ -11,8 +11,8 @@ export default function NotFound() {
   return (
     <section className={`container ${styles.wrap}`}>
       <div className={styles.mascot}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- static SVG mascot */}
-        <img src="/brand/mascot-confused.svg" alt="" width={220} height={220} />
+        {/* eslint-disable-next-line @next/next/no-img-element -- static mascot asset */}
+        <img src="/brand/mascot-confused.png" alt="" width={220} height={284} />
       </div>
       <div>
         <p className="eyebrow">404 · Page not found</p>

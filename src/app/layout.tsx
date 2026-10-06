@@ -21,7 +21,13 @@ export const metadata: Metadata = {
   description: site.description,
   openGraph: { type: 'website', siteName: site.name, locale: 'en_AU' },
   robots: { index: true, follow: true },
-  icons: { icon: '/brand/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/brand/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/brand/icon-192.png',
+  },
 };
 
 export const viewport: Viewport = {

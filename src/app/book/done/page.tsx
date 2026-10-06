@@ -72,8 +72,8 @@ export default async function BookDonePage() {
         </p>
       </div>
       <div className={styles.mascot}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- static SVG mascot */}
-        <img src="/brand/mascot-magnifier.svg" alt="" width={240} height={280} />
+        {/* eslint-disable-next-line @next/next/no-img-element -- static mascot asset */}
+        <img src="/brand/mascot-magnifier.png" alt="" width={240} height={287} />
       </div>
     </section>
   );

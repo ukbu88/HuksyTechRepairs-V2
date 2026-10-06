@@ -65,6 +65,6 @@ Set `HUSKY_LAUNCH_PROFILE` and/or `HUSKY_FEATURE_<KEY>` in the environment and r
 - [ ] Policies reviewed; `POLICY_STATUS` flipped to reviewed
 - [ ] About story supplied (`business.about`)
 - [ ] Photos dropped per `docs/SHOT_LIST.md` (at least hero, motherboard scope, repair bench)
-- [ ] Mascot/logo replaced if an illustrator version exists (same filenames in `public/brand/`)
+- [ ] Mascot/logo: a vector (SVG) version of the character sheet can replace the PNGs in `public/brand/` with the same names
 - [ ] Test enquiry end to end on production (reference, Neon row, email)
 - [ ] `NEXT_PUBLIC_SITE_URL` set to the real domain
