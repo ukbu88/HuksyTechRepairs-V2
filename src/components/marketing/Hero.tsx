@@ -14,6 +14,8 @@ interface HeroProps {
   imageSlot: string;
   stickers?: string[];
   tone?: 'canvas' | 'dark';
+  /** 'hero' for the two brand pages; 'large' for long, descriptive headlines. */
+  size?: 'hero' | 'large';
 }
 
 /** Page hero: big display type on the left, a photo slot with stickers on the right. */
@@ -26,13 +28,16 @@ export function Hero({
   imageSlot,
   stickers = [],
   tone = 'canvas',
+  size = 'hero',
 }: HeroProps) {
   return (
     <section className={[styles.hero, tone === 'dark' ? 'band--dark' : ''].join(' ')}>
       <div className={`container ${styles.grid}`}>
         <div className={styles.copy}>
           <p className="eyebrow">{eyebrow}</p>
-          <h1 className={styles.title}>{title}</h1>
+          <h1 className={[styles.title, size === 'large' ? styles.titleLarge : ''].join(' ')}>
+            {title}
+          </h1>
           <p className={`lead ${styles.lead}`}>{lead}</p>
           <div className={styles.actions}>
             {primary ? (

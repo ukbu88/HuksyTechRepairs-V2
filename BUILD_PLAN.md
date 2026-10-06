@@ -19,30 +19,32 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 
 ## Build progress
 
-Current stage: M3 — Repair — IN PROGRESS
+Current stage: M4 — Enquiry — IN PROGRESS
 Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 
 | Milestone | Status | Gate result | Notes |
 |---|---|---|---|
 | M1 Foundation | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | shell, flags, config, routes, slots, mascot |
 | M2 Brand slice | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | home (repair + motherboard compositions), /motherboard-repair + CSS explainer |
-| M3 Repair | IN PROGRESS | — | |
-| M4 Enquiry | TODO | — | |
+| M3 Repair | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /repair + six category pages, typed Canon §7.2 content |
+| M4 Enquiry | IN PROGRESS | — | |
 | M5 Supporting + discovery | TODO | — | |
 | M6 Flagged divisions | TODO | — | |
 | M7 Hardening | TODO | — | |
 
 ### Current milestone checklist
-- [ ] Typed repair content: per-category copy (symptoms, causes, how we diagnose, options, data, logistics, FAQ, next action) per Canon §7.2
-- [ ] `/repair` landing: problem tiles, common repair categories, motherboard escalation path, FAQ, start repair
-- [ ] `/repair/[category]` page template with generateStaticParams for the six categories, real 404 otherwise
-- [ ] Brand/model/repair route architecture stubbed in the catalogue (no records yet)
-- [ ] Breadcrumbs component (visible + JSON-LD later in M5)
-- [ ] Unit tests: category content completeness, route params
-- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M3/`, review in `ops/VERIFY.md`
+- [ ] Enquiry domain: Zod schema (steps: what needs help → device → what's happening → prior repair → logistics → contact/consent), intents, device prefill
+- [ ] `EnquiryRepository` interface + Neon adapter (`@neondatabase/serverless`, plain SQL) + migration `db/migrations/0001_enquiries.sql` issuing `HUS-######` on insert
+- [ ] `Notifier` interface + Resend adapter; failed email never loses or duplicates the stored enquiry
+- [ ] In-memory adapter, clearly labelled, refused in production; production refuses to fake success
+- [ ] Server action + no-JS form submission path (multi-step with server-side state in the URL/form, back without losing progress)
+- [ ] Spam protection: honeypot + time-to-submit + in-memory rate limit per IP
+- [ ] Confirmation page with real reference, mascot, "what happens next" without invented promises
+- [ ] Error state that is honest when storage is unavailable
+- [ ] Unit tests: schema, reference format, repository contract (memory + Neon with a mocked client), notifier failure handling, rate limit
+- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M4/`, review in `ops/VERIFY.md`
 
 ### Blocked / deferred
-- `git push origin main` refused with 403 (Claude GitHub App not installed on ukbu88/HuksyTechRepairs-V2; API connector is read-only) — all work is committed locally and the push is retried at every gate — unblocked by installing the app at https://github.com/apps/claude/installations/select_target or reconnecting GitHub at https://claude.ai/connect-github
 - Neon adapter untested against a real database — needs `DATABASE_URL` (M4)
 - Resend notifier untested against the real API — needs `RESEND_API_KEY` + recipient (M4)
 - About page content — needs Prince's real story (M5)

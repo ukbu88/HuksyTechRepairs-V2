@@ -42,3 +42,18 @@ Judged against Canon §16–17, §29; Build Command §3.1; BUILD_PLAN §5. Quest
 - Links to `/book` 404 until M4 (expected).
 
 Open: none for this milestone. M2 verdict: looks like Bench Pop. Keep the restraint: no new bands on later pages without a content reason.
+
+## M3 — Repair
+
+Routes: `/repair`, `/repair/phones`, `/repair/laptops`, `/repair/other` (desktop + mobile). `/repair/watches` → real 404 (dynamicParams off).
+Screenshots: `ops/screenshots/M3/`.
+
+- `/repair` landing: breadcrumb, problem-first hero, device tiles, "repairs we see most" as a three-column ruled list (Canon §7.1), board escalation band (only when motherboardRepair is on), process, logistics, second-diagnosis band, FAQ, CTA.
+- Category pages follow Canon §7.2 in order: symptoms → causes → diagnosis → options → data → logistics → (cases) → FAQ → next action. Pricing shows the quote path only; turnaround and warranty are omitted; parts categories render only when configured.
+- Fixed: long category headlines at hero scale left the photo slot looking small; added a `large` hero size for descriptive headlines (repair pages keep `hero` scale for the two brand pages only).
+- Fixed: warm/white bands alternated every section on category pages; sections are now white with a top rule and only logistics sits on warm.
+- Mobile: single column, two-column sections collapse to heading-then-list; CTAs full width; nothing clipped.
+- Copy tests: a unit test rejects slop phrases and invented prices/turnaround/warranty across all category content, and the "repair anything" claim.
+- Links to `/book?...` still 404 until M4.
+
+Open: none.

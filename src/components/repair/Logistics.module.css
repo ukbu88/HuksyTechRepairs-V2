@@ -1,0 +1,11 @@
+.wrap {
+  max-width: 44rem;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--text-lead);
+}

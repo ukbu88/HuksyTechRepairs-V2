@@ -1,0 +1,75 @@
+.examples {
+  display: grid;
+  gap: var(--space-1);
+  max-width: var(--w-prose);
+  font-size: var(--text-lead);
+  border-left: 4px solid var(--signal);
+  padding-left: var(--space-4);
+}
+.examples .eyebrow {
+  margin: 0;
+}
+.twoCol {
+  display: grid;
+  gap: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: var(--border);
+}
+@media (min-width: 900px) {
+  .twoCol {
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-8);
+  }
+}
+.symptoms,
+.options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  border-top: var(--border);
+}
+.symptoms li,
+.options li {
+  display: grid;
+  gap: 0.2rem;
+  padding: var(--space-4) 0;
+  border-bottom: var(--border-thin);
+  max-width: 44rem;
+}
+.symptoms strong,
+.options strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+.symptoms span,
+.options span {
+  color: var(--ink-muted);
+}
+.causes,
+.parts {
+  margin: 0;
+  display: grid;
+  gap: var(--space-4);
+  max-width: 44rem;
+}
+.causes dt,
+.parts dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.causes dd,
+.parts dd {
+  margin: 0.2rem 0 0;
+  color: var(--ink-muted);
+}
+.parts {
+  margin-top: var(--space-4);
+  font-size: 1rem;
+}
+.prose {
+  max-width: 44rem;
+}

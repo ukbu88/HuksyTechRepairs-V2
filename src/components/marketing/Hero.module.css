@@ -17,6 +17,10 @@
   max-width: 11ch;
   margin-bottom: 0.35em;
 }
+.titleLarge {
+  font-size: var(--text-h1);
+  max-width: 16ch;
+}
 .lead {
   max-width: 34rem;
   margin-bottom: var(--space-5);

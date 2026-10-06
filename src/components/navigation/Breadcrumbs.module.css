@@ -1,0 +1,30 @@
+.nav {
+  padding-top: var(--space-4);
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  letter-spacing: 0.02em;
+}
+.item + .item::before {
+  content: '/';
+  color: var(--ink-muted);
+  margin-right: 0.35rem;
+}
+.item a {
+  text-decoration: none;
+  padding-block: 0.4rem;
+  display: inline-block;
+}
+.item a:hover {
+  text-decoration: underline;
+}
+.item span {
+  color: var(--ink-muted);
+}
