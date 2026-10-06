@@ -31,3 +31,7 @@ One line per decision: date — decision — reason.
 - 2026-10-06 — Persistence is plain SQL over `@neondatabase/serverless` (no Drizzle): one table, one migration, and the `HUS-######` reference is a column default from a Postgres sequence starting at 1001 — the database issues it, never the app.
 - 2026-10-06 — Notification is Husky-only (ENQUIRY_NOTIFY_TO). A customer acknowledgement email is deliberately not sent until a verified sending domain and reviewed wording exist; the confirmation page is the acknowledgement.
 - 2026-10-06 — Rate limiting is in-memory per instance (5 per 10 minutes per client address) plus a honeypot and a minimum time-on-step. Documented as a soft brake, not a security boundary.
+- 2026-10-06 — Policies are drafts with a `POLICY_STATUS` switch: unreviewed → DRAFT banner, noindex, excluded from the sitemap. Reviewed status is a one-line edit in src/content/policies.ts.
+- 2026-10-06 — Organization JSON-LD is emitted site-wide from confirmed facts only; it becomes LocalBusiness only when `addressPolicy: 'public'` and an address exist. Service JSON-LD only for enabled divisions.
+- 2026-10-06 — OG image is generated with next/og from a static Bricolage 800 WOFF (satori cannot read WOFF2); no photography.
+- 2026-10-06 — Analytics: typed event contract with a no-op sink; the enquiry action emits submitted/failed events. No provider until Husky picks a consent-aware one.

@@ -11,6 +11,7 @@ import { logisticsOptions, parseState, stepUrl } from '@/enquiries/flow';
 import { COOKIE_OPTIONS, DRAFT_COOKIE, RESULT_COOKIE, type DraftCookie } from '@/enquiries/cookies';
 import { getFeatures } from '@/features/snapshot';
 import { business } from '@/config/business';
+import { analytics } from '@/analytics/events';
 
 function str(fd: FormData, key: string): string {
   const v = fd.get(key);
@@ -61,6 +62,7 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
   };
 
   if (!enquiryRateLimiter.allow(ip)) {
+    analytics.track('enquiry_failed', { reason: 'rate-limit' });
     jar.set(
       DRAFT_COOKIE,
       JSON.stringify({ ...draftBase, reason: 'rate-limit' } satisfies DraftCookie),
@@ -88,6 +90,7 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
     } else {
       errors.logistics = 'Choose one of the logistics options shown.';
     }
+    analytics.track('enquiry_failed', { reason: 'validation' });
     jar.set(
       DRAFT_COOKIE,
       JSON.stringify({ ...draftBase, errors, reason: 'validation' } satisfies DraftCookie),
@@ -112,6 +115,7 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
   }
 
   if (!outcome.ok) {
+    analytics.track('enquiry_failed', { reason: 'storage' });
     jar.set(
       DRAFT_COOKIE,
       JSON.stringify({ ...draftBase, reason: 'storage' } satisfies DraftCookie),
@@ -120,6 +124,11 @@ export async function submitEnquiry(formData: FormData): Promise<void> {
     redirect(`${contactUrl}&error=1`);
   }
 
+  analytics.track('enquiry_submitted', {
+    reference: outcome.reference,
+    help: parsed.data.help,
+    logistics: parsed.data.logistics,
+  });
   jar.delete(DRAFT_COOKIE);
   jar.set(
     RESULT_COOKIE,

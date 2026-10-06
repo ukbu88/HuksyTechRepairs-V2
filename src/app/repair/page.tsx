@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { gateRoute } from '@/routes/gate';
+import { JsonLd } from '@/seo/JsonLd';
+import { serviceJsonLd, servicesForSnapshot } from '@/seo/jsonld';
+import { siteUrl } from '@/config/site';
 import { pageMetadata } from '@/seo/metadata';
 import { business } from '@/config/business';
 import { CTA, primaryAction } from '@/content/cta';
@@ -32,9 +35,11 @@ export default function RepairPage() {
   const start = primaryAction(features, 'repair');
   const diagnosis = primaryAction(features, 'diagnosis');
   const motherboard = features.isEnabled('motherboardRepair');
+  const service = servicesForSnapshot(features).find((s) => s.path === PATH);
 
   return (
     <>
+      {service ? <JsonLd data={serviceJsonLd(service, business, siteUrl())} /> : null}
       <div className="container">
         <Breadcrumbs path={PATH} />
       </div>

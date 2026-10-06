@@ -11,15 +11,15 @@ Status: DRAFT. Sections are agreed one at a time; only sections marked AGREED ar
 | 3 | Business facts register | DRAFT — mostly unknown |
 | 4 | Stack and architecture | DRAFT |
 | 5 | Visual direction — "Bench Pop" | BUILT (M1–M2) |
-| 6 | Image slots (no stock photography) | AGREED (approach) / DRAFT (detail) |
-| 7 | Launch pages | AGREED (list) / DRAFT (detail) |
+| 6 | Image slots (no stock photography) | BUILT (M1, M5 shot list) |
+| 7 | Launch pages | BUILT (M2–M5) |
 | 8 | Later divisions (built, flagged off) | DRAFT |
 | 9 | Milestones and gates | DRAFT |
 | 10 | Definition of done | DRAFT |
 
 ## Build progress
 
-Current stage: M5 — Supporting + discovery — IN PROGRESS
+Current stage: M6 — Flagged divisions — IN PROGRESS
 Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 
 | Milestone | Status | Gate result | Notes |
@@ -28,20 +28,21 @@ Last updated: 2026-10-05T23:50:00Z · Last commit: (see git log)
 | M2 Brand slice | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | home (repair + motherboard compositions), /motherboard-repair + CSS explainer |
 | M3 Repair | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /repair + six category pages, typed Canon §7.2 content |
 | M4 Enquiry | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | /book six steps + /book/done, Neon + Resend adapters, memory store, HUS refs, works without JS |
-| M5 Supporting + discovery | IN PROGRESS | — | |
-| M6 Flagged divisions | TODO | — | |
+| M5 Supporting + discovery | DONE | lint ✓ typecheck ✓ test ✓ build ✓ screenshots ✓ | contact, draft policies, gated about, sitemap/robots/OG/JSON-LD, analytics contract |
+| M6 Flagged divisions | IN PROGRESS | — | |
 | M7 Hardening | TODO | — | |
 
 ### Current milestone checklist
-- [ ] `/about` gated on `business.about` (404 until content exists), with the real-content template ready
-- [ ] `/contact`: only confirmed facts; otherwise routes to /book
-- [ ] `/policies/privacy` and `/policies/repair-terms`: clearly marked DRAFT, factual about what the site actually does
-- [ ] Metadata: canonicals on every route, OG image (code-drawn, `opengraph-image.tsx`), robots, sitemap filtered by features
-- [ ] JSON-LD: Organization (confirmed facts only; LocalBusiness only with address), Service per enabled division, BreadcrumbList
-- [ ] Typed analytics event contract with a no-op sink
-- [ ] Unit tests: sitemap filtering per profile, JSON-LD never emits disabled services or unconfirmed facts
-- [ ] `docs/SHOT_LIST.md` regenerated (already automatic postbuild)
-- [ ] Gate: lint/typecheck/test/build, screenshots in `ops/screenshots/M5/`, review in `ops/VERIFY.md`
+- [ ] Business: `/business`, `/business/schools`, `/business/it-providers`, `/business/repair-partners` (Canon §12, §20.9; no SLAs/volumes)
+- [ ] Privacy: `/privacy`, `/privacy/grapheneos`, `/privacy/devices` with dated compatibility records (Canon §10; no absolute claims)
+- [ ] Recycling: `/recycle` with the lifecycle hierarchy (Canon §11)
+- [ ] Knowledge: `/knowledge` index + `/knowledge/[slug]` MDX-style typed article template, zero published articles
+- [ ] Refurbished: `/refurbished` + `/refurbished/build` builder shell with live build sheet, inventory schema, dev-only fixtures
+- [ ] Repair tracking: `/track` architecture only (lookup contract; disabled)
+- [ ] Pickup / mail-in: already config-driven in the enquiry flow; verify under `full`
+- [ ] Homepage section renderers for each division (composition already emits them)
+- [ ] Leakage tests: under `repair-core` nothing from these divisions appears in nav, home, footer, sitemap, JSON-LD, enquiry options
+- [ ] Gate: build under `full` for screenshots in `ops/screenshots/M6/`; lint/typecheck/test/build under launch profile; review in `ops/VERIFY.md`
 
 ### Blocked / deferred
 - Neon adapter untested against a real database — needs `DATABASE_URL` (M4)

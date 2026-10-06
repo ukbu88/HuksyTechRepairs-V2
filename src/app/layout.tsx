@@ -9,6 +9,8 @@ import { buildNav } from '@/routes/catalogue';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
+import { JsonLd } from '@/seo/JsonLd';
+import { organizationJsonLd } from '@/seo/jsonld';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
@@ -34,6 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en-AU" className={fontClassName}>
       <body>
+        <JsonLd data={organizationJsonLd(business, siteUrl())} />
         <SkipLink />
         <SiteHeader siteName={site.name} nav={nav} />
         <main id="main" tabIndex={-1}>

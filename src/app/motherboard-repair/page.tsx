@@ -1,4 +1,7 @@
 import { gateRoute } from '@/routes/gate';
+import { JsonLd } from '@/seo/JsonLd';
+import { serviceJsonLd, servicesForSnapshot } from '@/seo/jsonld';
+import { siteUrl } from '@/config/site';
 import { pageMetadata } from '@/seo/metadata';
 import { business } from '@/config/business';
 import { CTA, primaryAction } from '@/content/cta';
@@ -28,9 +31,11 @@ export default function MotherboardRepairPage() {
   const { features } = gateRoute(PATH);
   const send = primaryAction(features, 'motherboard');
   const second = primaryAction(features, 'second-diagnosis');
+  const service = servicesForSnapshot(features).find((s) => s.path === PATH);
 
   return (
     <>
+      {service ? <JsonLd data={serviceJsonLd(service, business, siteUrl())} /> : null}
       <Hero
         eyebrow={`Motherboard repairs · ${business.city}`}
         title="A dead device isn’t always a dead device."

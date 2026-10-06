@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { gateRoute } from '@/routes/gate';
+import { JsonLd } from '@/seo/JsonLd';
+import { serviceJsonLd, servicesForSnapshot } from '@/seo/jsonld';
+import { siteUrl } from '@/config/site';
 import { pageMetadata } from '@/seo/metadata';
 import { business } from '@/config/business';
 import { bookHref, primaryAction } from '@/content/cta';
@@ -51,9 +54,11 @@ export default async function RepairCategoryPage({ params }: { params: Promise<P
   const generalFaq = repairFaq(business).filter(
     (f) => f.id !== 'other-device' || def.slug === 'other',
   );
+  const service = servicesForSnapshot(features).find((s) => s.path === path);
 
   return (
     <>
+      {service ? <JsonLd data={serviceJsonLd(service, business, siteUrl())} /> : null}
       <div className="container">
         <Breadcrumbs path={path} />
       </div>

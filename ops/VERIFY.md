@@ -75,3 +75,19 @@ Screenshots: `ops/screenshots/M4/` (help, device with errors, symptoms, logistic
 - Invented-fact check: no response time, fee or drop-off address appears. "We reply by email" is the mechanism the form exists for, not a service-level promise.
 
 Open: Neon and Resend adapters are tested against fakes only (no credentials in the build). Noted in Blocked / deferred.
+
+## M5 — Supporting + discovery
+
+Routes: `/contact`, `/policies/privacy`, `/policies/repair-terms`, `/about` (404 by design: no content yet), `/sitemap.xml`, `/robots.txt`, `/opengraph-image`.
+Screenshots: `ops/screenshots/M5/`.
+
+- `/contact` with no confirmed facts: honest headline ("The quickest way in is the enquiry."), the action, the HUS reply note and policy links. Nothing invented. Phone / email / hours / address / drop-off blocks are wired and render only when configured.
+- Policies: both carry a visible DRAFT notice (warning tint, mono tag), `noindex` while unreviewed, and are excluded from the sitemap until `POLICY_STATUS.*.reviewed` is true. Every unconfirmed business term is an explicit italic "to be confirmed by Husky" line rather than invented wording.
+- `/about` returns a real 404 and is absent from nav and sitemap; the template renders the moment `business.about` exists.
+- Sitemap under `repair-core`: home, repair + six categories, motherboard repairs, book, contact. No disabled division, no draft policy, no /book/done (also disallowed in robots).
+- JSON-LD verified in rendered HTML: Organization (not LocalBusiness: no public address), Service on /repair, the six category pages and /motherboard-repair, BreadcrumbList on inner pages. No telephone/address/hours/rating fields emitted.
+- OG image: code-drawn, orange with ink Bricolage at 800, the logo mark, three label chips. Inspected at 1200×630.
+- Canonicals on every page via `pageMetadata`; `metadataBase` from NEXT_PUBLIC_SITE_URL (localhost until Prince supplies the domain, flagged by the preflight).
+- `docs/SHOT_LIST.md` regenerated on build (20 slots).
+
+Open: none. Production origin still localhost in this environment (expected; strict preflight will refuse to ship it).

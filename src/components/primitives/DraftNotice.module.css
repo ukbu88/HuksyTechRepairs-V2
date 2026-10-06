@@ -1,0 +1,22 @@
+.notice {
+  display: grid;
+  gap: var(--space-2);
+  border: 2px solid var(--ink);
+  border-left: 8px solid var(--warning);
+  background: var(--warning-tint);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin: var(--space-4) 0 var(--space-6);
+  max-width: var(--w-prose);
+}
+.notice p {
+  margin: 0;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--warning);
+}
